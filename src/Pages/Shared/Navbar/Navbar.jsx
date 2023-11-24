@@ -2,10 +2,13 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import logo from '../../../assets/logo2.png'
+import useStore from '../../../hooks/useStore';
 
 const Navbar = () => {
-    const {user,logOut}=useAuth()
-
+    const {user,logOut,loading}=useAuth()
+    
+const [manager,isManagerLoading]=useStore()
+console.log(manager,'storesdjfkjdkf');
 
     const handleLogout = () => {
         logOut()
@@ -19,14 +22,13 @@ const Navbar = () => {
     
    
 
-
     const links= <>
 
   <li>  <NavLink to={'/'}   className={({ isActive, isPending }) =>
     isPending ? "pending" : isActive ? "active" : ""
   } >  Home</NavLink></li>
 
-{ user?   <li >  <Link onClick={()=>handleLogout()}  to={''}>  Log Out</Link></li> :
+{ user?.email  ? <button onClick={handleLogout}>  Log Out</button> :
 
 <li>  <Link to={'/login'}>  Login</Link></li> 
 
@@ -35,7 +37,7 @@ const Navbar = () => {
 }
 { !user?.email && <li>  <Link to={'/register'}>  Register</Link></li>}
 
-<li>  <Link to={'/create-store'}>  Create-Shop</Link></li>
+{   manager && !isManagerLoading?  <li>  <Link to={'/dashboard'}> Dashboard</Link></li> :  <li>  <Link to={'/create-store'}>  Create-Shop</Link></li>}
 <li>  <Link to={'/'}>  Watch Demo</Link></li>
 
  
