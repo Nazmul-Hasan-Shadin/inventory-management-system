@@ -8,6 +8,9 @@ import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ManagerRoutes from "../PrivateRoute/ManagerRoutes";
 import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
+import Payment from "../Pages/Payment/Payment";
+import ProductTable from "../Pages/Dashboard/ProductTable/ProductTable";
+import ProductUpdate from "../Pages/Dashboard/Updata/ProductUpdate";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +48,18 @@ const router = createBrowserRouter([
       {
         path:'/dashboard/addproduct',
         element:  <ManagerRoutes><AddProduct></AddProduct></ManagerRoutes>
+      },
+      {
+        path:'/dashboard/payment',
+        element: <Payment></Payment>
+      },
+      {
+        path:'/dashboard/products',
+        element: <ProductTable></ProductTable>
+      },
+      {
+        path:'/dashboard/update/:id',
+        element: <ProductUpdate>  </ProductUpdate>
       }
     ]
   }
