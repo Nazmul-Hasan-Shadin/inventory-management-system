@@ -11,6 +11,9 @@ import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import Payment from "../Pages/Payment/Payment";
 import ProductTable from "../Pages/Dashboard/ProductTable/ProductTable";
 import ProductUpdate from "../Pages/Dashboard/Updata/ProductUpdate";
+import ProductSection from "../Pages/Dashboard/ProductSection/ProductSection";
+import Cart from "../Pages/Dashboard/Cart/Cart";
+import CheckOutCart from "../Pages/Dashboard/Cart/CheckOutCart";
 
 const router = createBrowserRouter([
     {
@@ -60,7 +63,21 @@ const router = createBrowserRouter([
       {
         path:'/dashboard/update/:id',
         element: <ProductUpdate>  </ProductUpdate>
+      },
+      {
+        path:'/dashboard/all-product',
+        element:<ProductSection></ProductSection>
       }
+      ,
+      {
+        path:'/dashboard/checkout',
+        element: <Cart></Cart>
+      },
+      {
+        path:'/dashboard/checkout/paid',
+        element: <CheckOutCart></CheckOutCart>
+      },
+
     ]
   }
 

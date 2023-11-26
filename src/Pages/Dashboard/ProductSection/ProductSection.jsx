@@ -2,9 +2,40 @@ import React from 'react';
 import useAllProducts from '../../../hooks/useAllProducts';
 import { FaEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useaxiosSecure from '../../../hooks/useaxiosSecure';
+import useAuth from '../../../hooks/useAuth';
 
 const ProductSection = () => {
     const [products]=useAllProducts()
+    const axiosSecure=useaxiosSecure()
+    const {user}=useAuth()
+const handlAddToCart=async(product)=>{
+    
+    let cartInfo= {
+         cartId:product._id,
+        desc:product.desc,
+        discount:parseFloat(product.discount),
+
+        image:product.image,
+        name:product.name,
+      
+        quantity: parseFloat(product.quantity),
+        email:user?.email,
+     
+        sellingPrice:parseFloat(product.sellingPrice)
+       }
+    
+    //    ===================post to cart db=========================
+      axiosSecure.post('/admin/cart',cartInfo)
+      .then(res=>{
+        console.log(res);
+      })
+    
+
+
+}
+
+
     return (
         <div>
         <div className="overflow-x-auto">
@@ -18,20 +49,20 @@ const ProductSection = () => {
       </label>
     </th>
     <th>Product Name and Image </th>
-    <th>Sale Count</th>
+    <th>Quantity</th>
     <th>Product Quantity</th>
   
-    <th>update here</th>
-    <th>Delete</th>
+    <th>Selling Price</th>
+    <th>Check Out</th>
   </tr>
 </thead>
 <tbody>
 
 {
-products?.product?.map((product,index)=> <tr key={product._id}>
+products?.product?.map((product)=> <tr key={product._id}>
     <th>
       <label>
-      {index+1}
+      {product._id}
       </label>
     </th>
     <td>
@@ -49,15 +80,16 @@ products?.product?.map((product,index)=> <tr key={product._id}>
     </td>
     <td>
     
-      <span className="badge badge-ghost badge-sm">Sale Count: {} </span>
+      <span className="badge badge-ghost badge-sm"> quantity <span>{product.quantity}</span> </span>
     </td>
-    <td> {product?.quantity} </td>
-    <td> <Link to={`/dashboard/update/${product._id}`}> 
-       <td>something </td>
-       
-       </Link> </td>
  
-    <td>  d</td>
+    <td> 
+       <td>Discount: <span>{product.discount}</span>% </td>
+       
+     </td>
+ 
+    <td>  selling price: {product.sellingPrice} </td>
+    <button onClick={()=>handlAddToCart(product)} className='btn btn-outline mt-4'>  <td>  Add For Check Out</td> </button>
 
   </tr> )
 }

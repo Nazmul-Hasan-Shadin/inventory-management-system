@@ -1,6 +1,7 @@
 
 import { NavLink, Outlet } from 'react-router-dom';
-import {FaHome, FaList, FaPlus, FaProductHunt}from 'react-icons/fa'
+import {FaCartPlus, FaHome, FaList, FaPlus, FaProductHunt}from 'react-icons/fa'
+import {CiViewTable} from 'react-icons/ci'
 import useStore from '../hooks/useStore';
 
 
@@ -44,8 +45,17 @@ const Dashboard = () => {
 
            <li> <NavLink to={"/dashboard/products"}>
           <FaHome></FaHome>
-           Product Table </NavLink> </li> 
+           product table </NavLink> </li> 
 
+
+           <li> <NavLink to={"/dashboard/all-product"}>
+           <CiViewTable />
+           All Proucts </NavLink> </li> 
+
+           <li> <NavLink to={"/dashboard/checkout/paid"}>
+          <FaCartPlus></FaCartPlus>
+            Carts </NavLink> </li>         
+        
 
  <li> <NavLink to={"/"}>
           <FaHome></FaHome>

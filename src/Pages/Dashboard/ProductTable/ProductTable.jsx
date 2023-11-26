@@ -87,7 +87,7 @@ const handleDelete=(id)=>{
         </td>
         <td>
         
-          <span className="badge badge-ghost badge-sm">Sale Count: {} </span>
+          <span className="badge badge-ghost badge-sm">Sale Count: {product.saleCount} </span>
         </td>
         <td> {product?.quantity} </td>
         <td> <Link to={`/dashboard/update/${product._id}`}> 

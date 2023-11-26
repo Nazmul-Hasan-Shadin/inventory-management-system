@@ -2,21 +2,35 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useaxiosSecure from "../../../hooks/useaxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import useCart from "../../../hooks/useCart";
 
 const CheckOut = () => {
 
     
-  const [clientSec, setClientSec] = useState();
+  const [clientSec, setClientSec] = useState('');
+  console.log('client sec',clientSec);
   const { user } = useAuth();
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useaxiosSecure();
+ 
+  const carts=useCart()
+ const total= carts.reduce((total,cart)=>total+cart.sellingPrice,0) 
+
+   const cartIds=carts.map((cart)=>cart.cartId)
 
   useEffect(() => {
-    axiosSecure.post("/create-payment-intent", {}).then((res) => {
-      console.log(res.data);
-    });
-  }, []);
+    axiosSecure.post("/create-payment-intent", {price:total})
+    .then((res) => {
+      console.log(res.data,'paymentintent');
+      setClientSec(res.data.clientSecret)
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+    
+    ;
+  }, [axiosSecure,total])
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -49,7 +63,7 @@ const CheckOut = () => {
     }
 
     const { paymentIntent, error: cofirmError } =
-      await stripe.confirmCardPayment(clientSecret, {
+      await stripe.confirmCardPayment(clientSec, {
         payment_method: {
           card: card,
           billing_details: {
@@ -60,22 +74,40 @@ const CheckOut = () => {
       });
 
     if (cofirmError) {
-      console.log(cofirmError);
+      console.log(cofirmError,'error payment');
     } else {
       console.log("payment itent", paymentIntent);
       if (paymentIntent.status === "succeeded") {
-        console.log("transiction id", paymentIntent.id);
+        console.log("succestpaymetn ", paymentIntent);
 
         // NOW SAVE PAYMENT INTO THE DATABASE
 
-        const payment = {
+        const paymentInfo = {
           email: user.email,
           transictionId: paymentIntent.id,
 
           date: new Date(),
+          amount:paymentIntent.amount,
+          cartId:carts.map((cart)=>cart.cartId)
 
-          status: "pending",
+        
         };
+
+  //  if payment succes now insert payment info to saleCollection and update quantity of product
+ 
+  axiosSecure.post("/paymentInfo",paymentInfo)
+  .then(res=>{
+    // if payment succesfull then update quantity and saleCount based on these [id]
+     axiosSecure.patch(`/updateQuantity/${cartIds.join(',')}`)
+    console.log(res,'payment data stored');
+     
+  })
+  .catch(err=>{
+    console.log(err);
+  })
+
+
+
       }
     }
   };
