@@ -1,7 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import useaxiosSecure from '../../../hooks/useaxiosSecure';
-import useAuth from '../../../hooks/useAuth';
+
 import { Link } from 'react-router-dom';
 import useCart from '../../../hooks/useCart';
 
@@ -66,7 +63,7 @@ const Cart = () => {
 		<button type="button" className="px-6 py-2 border rounded-md dark:border-violet-400">Back
 			<span className="sr-only sm:not-sr-only">to shop</span>
 		</button>
-		<Link to={'/dashboard/payment'}><button type="button" className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400">
+		<Link to={`/dashboard/payment`}><button type="button" className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400">
 			<span className="sr-only sm:not-sr-only">Get</span>Paid
 		</button></Link>
 	</div>

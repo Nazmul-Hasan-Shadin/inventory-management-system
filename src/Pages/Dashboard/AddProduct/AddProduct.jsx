@@ -61,7 +61,8 @@ const {user}=useAuth()
         quantity: parseFloat(data.quantity),
         email:user?.email,
         buyPrice:parseFloat(data.buyPrice),
-        sellingPrice:parseFloat(data.sellingPrice),
+        sellingPrice: parseFloat(data.buyPrice + data.buyPrice * 0.075 + data.buyPrice * data.profit / 100).toFixed(2),
+           
         saleCount:0
        }
      

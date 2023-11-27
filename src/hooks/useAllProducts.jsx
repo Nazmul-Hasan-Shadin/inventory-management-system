@@ -2,8 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 
 import useaxiosSecure from './useaxiosSecure';
 import useAuth from './useAuth';
+import useStore from './useStore';
 
 const useAllProducts = () => {
+    const [store]=useStore()
     const {user,loading}=useAuth()
     console.log(user,'from all');
     const axiosSecure=useaxiosSecure()
@@ -12,6 +14,11 @@ const useAllProducts = () => {
   enabled:!loading,
   queryFn:async()=>{
  try {
+    if (store.sysadmin) {
+      const res= await axiosSecure.get(`/sysadmin/products`)
+      return res.data
+    }
+
     const res= await axiosSecure.get(`/admin/products/${user?.email}`)
     return res.data
  } catch (error) {

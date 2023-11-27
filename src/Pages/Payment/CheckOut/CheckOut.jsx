@@ -3,11 +3,20 @@ import { useEffect, useState } from "react";
 import useaxiosSecure from "../../../hooks/useaxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
+import { useLocation, useParams } from "react-router-dom";
 
 const CheckOut = () => {
 
     
   const [clientSec, setClientSec] = useState('');
+
+const location=useLocation()
+const price= location.state.price
+
+console.log(location);
+
+
+
   console.log('client sec',clientSec);
   const { user } = useAuth();
   const stripe = useStripe();
@@ -20,7 +29,7 @@ const CheckOut = () => {
    const cartIds=carts.map((cart)=>cart.cartId)
 
   useEffect(() => {
-    axiosSecure.post("/create-payment-intent", {price:total})
+    axiosSecure.post("/create-payment-intent", {price:price || total})
     .then((res) => {
       console.log(res.data,'paymentintent');
       setClientSec(res.data.clientSecret)
@@ -30,7 +39,7 @@ const CheckOut = () => {
     })
     
     ;
-  }, [axiosSecure,total])
+  }, [axiosSecure,total,price])
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -83,7 +92,7 @@ const CheckOut = () => {
         // NOW SAVE PAYMENT INTO THE DATABASE
 
         const paymentInfo = {
-          email: user.email,
+          email: user?.email,
           transictionId: paymentIntent.id,
 
           date: new Date(),
@@ -99,7 +108,19 @@ const CheckOut = () => {
   .then(res=>{
     // if payment succesfull then update quantity and saleCount based on these [id]
      axiosSecure.patch(`/updateQuantity/${cartIds.join(',')}`)
-    console.log(res,'payment data stored');
+    if (price) {
+      axiosSecure.patch(`/productLimit/${user?.email}`,{price:price})
+      .then(res=>{
+        console.log('limit increase');
+        axiosSecure.patch(`/adminIncome`,{email:'nazmulhasanshadin000@gmail.com'})
+        .then(res=>{
+           console.log('incoume increase')
+        })
+        .catch(err=>console.log(err))
+
+      })
+
+    }
      
   })
   .catch(err=>{

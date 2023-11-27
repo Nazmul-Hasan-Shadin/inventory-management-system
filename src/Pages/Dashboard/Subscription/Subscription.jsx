@@ -1,7 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+
+import {  useNavigate } from 'react-router-dom';
 
 const Subscription = () => {
+    const navigate=useNavigate()
+    const handleRedirectWithPayment=(price)=>{
+   
+    
+         navigate('/dashboard/payment' ,{state:{price:price}})
+
+    }
     return (
         <div className=' flex md:flex-row ml-3 gap-3 ' >
           
@@ -58,9 +65,9 @@ const Subscription = () => {
 </li>
 </ul>
 
-<Link to={'/dashboard/payment'}>
-<button type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
-</Link>
+
+<button onClick={()=>handleRedirectWithPayment(10)} type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
+
 
 
 </div>
@@ -117,7 +124,9 @@ const Subscription = () => {
 <span className="text-base font-normal leading-tight text-gray-500 ms-3">24×7 phone & email support</span>
 </li>
 </ul>
-<button type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
+
+
+<button onClick={()=>handleRedirectWithPayment(20)} type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
 </div>
 
 
@@ -173,7 +182,7 @@ const Subscription = () => {
 <span className="text-base font-normal leading-tight text-gray-500 ms-3">24×7 phone & email support</span>
 </li>
 </ul>
-<button type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
+<button onClick={()=>handleRedirectWithPayment(50)} type="button" className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose plan</button>
 </div>
    
         </div>

@@ -12,6 +12,7 @@ const Login = () => {
   const {store}=useStore()
   const axiosPublic = useAxiosPublic();
   const { googleSignIn, handleSignedIn, logOut, user } = useAuth();
+  console.log(user,'iam user ho');
   console.log(user);
   const location = useLocation();
   const navigate = useNavigate();
@@ -27,10 +28,11 @@ const Login = () => {
 
     handleSignedIn(email, password)
       .then((result) => {
+        console.log('iam result',result);
         console.log(result);
         navigate(location?.state ? location.state : "/");
         //   try to find user stroe if available then redirect to dashboard
-        if (store) {
+        if (store.manager || store.sysAdmin) {
           navigate('/dashboard')
         }
         
@@ -44,13 +46,14 @@ const Login = () => {
   const googleHandler = () => {
     googleSignIn()
       .then((res) => {
-        console.log(res);
-        navigate(location?.state ? location.state : "/");
+        console.log(res,'gggggggggghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+      
         const userInfo = {
-          name: user?.displayName,
-          email: user?.email,
-          photo: user?.photoURL,
+          name: res?.user?.displayName,
+          email: res?.user?.email,
+          photo: res?.user?.photoURL,
         };
+        console.log(userInfo,'iam user info');
         //  post user information to db
         // posting
         console.log("posting");
@@ -62,6 +65,7 @@ const Login = () => {
           .catch((err) => {
             console.log(err);
           });
+          navigate(location?.state ? location.state : "/");
 
         toast.success("Successfully Logged In");
       })

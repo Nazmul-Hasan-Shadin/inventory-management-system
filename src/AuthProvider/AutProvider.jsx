@@ -3,7 +3,7 @@ import { Children, createContext, useContext, useEffect, useState } from "react"
 import auth from "../firebase/firebase.config";
 
 
-export const AuthContext= createContext();
+export const AuthContext= createContext()
 
 const provider = new GoogleAuthProvider();
 
@@ -18,7 +18,7 @@ const AuthProvider=({children}) => {
         return  createUserWithEmailAndPassword(auth,email,password)
     }
 
-    const logOut=()=>{
+    const handleLogOut=()=>{
       setLoading(true)
         return signOut(auth)
     }
@@ -46,10 +46,14 @@ const AuthProvider=({children}) => {
   useEffect(()=>{
   const unsubscribe= onAuthStateChanged(auth,user=>{
      if (user) {
-        console.log(user);
+        console.log(user)
         setUser(user)
           setLoading(false)
 
+     }
+
+     else{
+      setUser(null)
      }
   })
   return ()=>unsubscribe()
@@ -59,7 +63,7 @@ const AuthProvider=({children}) => {
 
   const authInfo= {
 
-   logOut,
+    handleLogOut,
      googleSignIn,
     updateUser,
     createUser,

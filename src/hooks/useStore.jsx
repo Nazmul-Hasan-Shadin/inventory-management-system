@@ -22,7 +22,7 @@ const useStore=()=>{
      queryFn: async()=>{
          try {
             const isStore= await axiosPublic.get(`/users/${user?.email}`)
-            return isStore.data.manager
+            return isStore.data
          } catch (error) {
              return false
          }

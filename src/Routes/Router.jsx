@@ -16,6 +16,9 @@ import Cart from "../Pages/Dashboard/Cart/Cart";
 import CheckOutCart from "../Pages/Dashboard/Cart/CheckOutCart";
 import SaleSummery from "../Pages/Dashboard/SaleSummery/SaleSummery";
 import Subscription from "../Pages/Dashboard/Subscription/Subscription";
+import SysAllProduct from "../Pages/Dashboard/SysAllProduct/SysAllProduct";
+import SysSellSummery from "../Pages/Dashboard/SysSellSummery/SysSellSummery";
+import SysUsers from "../Pages/Dashboard/sysUsers/sysUsers";
 
 const router = createBrowserRouter([
     {
@@ -90,6 +93,27 @@ const router = createBrowserRouter([
 
       
 
+    ]
+  },
+
+
+
+  {
+    path:'/mainDashboard',
+    element:<Dashboard></Dashboard>,
+    children:[
+      {
+        path:'/mainDashboard/all-store',
+        element:<SysAllProduct></SysAllProduct>
+      },
+      {
+        path:'/mainDashboard/syssale-summery',
+        element: <SysSellSummery></SysSellSummery>
+      },
+      {
+        path:'/mainDashboard/all-users',
+        element: <SysUsers></SysUsers>
+      }
     ]
   }
 

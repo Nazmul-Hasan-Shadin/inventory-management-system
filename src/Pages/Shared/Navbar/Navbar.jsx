@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import logo from '../../../assets/logo2.png'
 import useStore from '../../../hooks/useStore';
+import { AuthContext } from '../../../AuthProvider/AutProvider';
 
 const Navbar = () => {
-    const {user,logOut,loading}=useAuth()
+  const {user}=useContext(AuthContext)
+    const {handleLogOut:handleSignOut,loading}=useAuth()
     
 const [manager,isManagerLoading]=useStore()
 console.log(manager,'storesdjfkjdkf');
 
     const handleLogout = () => {
-        logOut()
+      handleSignOut()
             .then(res => {
-                console.log(res)
+                console.log(res,'succes logout')
+
             })
             .catch(err => {
-                console.log(err);
+                console.log(err,'logout error');
             });
     };
     
@@ -28,16 +31,16 @@ console.log(manager,'storesdjfkjdkf');
     isPending ? "pending" : isActive ? "active" : ""
   } >  Home</NavLink></li>
 
-{ user?.email  ? <button onClick={handleLogout}>  Log Out</button> :
+{ user? <button onClick={handleLogout}>  Log Out</button> :
 
-<li>  <Link to={'/login'}>  Login</Link></li> 
+<li>   <Link to={'/login'}>  Login</Link> </li> 
 
  
 
 }
 { !user?.email && <li>  <Link to={'/register'}>  Register</Link></li>}
 
-{   manager && !isManagerLoading?  <li>  <Link to={'/dashboard'}> Dashboard</Link></li> :  <li>  <Link to={'/create-store'}>  Create-Shop</Link></li>}
+{   manager.manager || manager.sysadmin && !isManagerLoading?  <li>  <Link to={'/dashboard'}> Dashboard</Link></li> :  <li>  <Link to={'/create-store'}>  Create-Shop</Link></li>}
 <li>  <Link to={'/'}>  Watch Demo</Link></li>
 
  
