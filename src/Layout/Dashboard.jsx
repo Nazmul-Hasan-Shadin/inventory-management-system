@@ -55,11 +55,20 @@ const Dashboard = () => {
            <li> <NavLink to={"/dashboard/checkout/paid"}>
           <FaCartPlus></FaCartPlus>
             Carts </NavLink> </li>         
+
+            <li> <NavLink to={"/dashboard/sell-summery"}>
+          <FaCartPlus></FaCartPlus>
+            Sale Summery </NavLink> </li>             
         
 
  <li> <NavLink to={"/"}>
           <FaHome></FaHome>
               Logout </NavLink> </li> 
+
+
+              <li> <NavLink to={"/dashboard/subscription"}>
+          <FaHome></FaHome>
+           subscription </NavLink> </li>             
 
               </>: 
     //   normal users  routes
@@ -75,10 +84,10 @@ const Dashboard = () => {
 
               
     
-            <li> <NavLink to={"/"}>
-          <FaHome></FaHome>
-           user Cart </NavLink> </li> 
-              
+      
+
+           
+          
               
               
               </>

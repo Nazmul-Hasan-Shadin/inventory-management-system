@@ -14,6 +14,8 @@ import ProductUpdate from "../Pages/Dashboard/Updata/ProductUpdate";
 import ProductSection from "../Pages/Dashboard/ProductSection/ProductSection";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import CheckOutCart from "../Pages/Dashboard/Cart/CheckOutCart";
+import SaleSummery from "../Pages/Dashboard/SaleSummery/SaleSummery";
+import Subscription from "../Pages/Dashboard/Subscription/Subscription";
 
 const router = createBrowserRouter([
     {
@@ -77,6 +79,16 @@ const router = createBrowserRouter([
         path:'/dashboard/checkout/paid',
         element: <CheckOutCart></CheckOutCart>
       },
+      {
+        path:'/dashboard/sell-summery',
+        element: <SaleSummery></SaleSummery>
+      },
+      {
+        path:'/dashboard/subscription',
+        element: <Subscription></Subscription>
+      },
+
+      
 
     ]
   }
