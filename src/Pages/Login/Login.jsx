@@ -46,7 +46,7 @@ const Login = () => {
   const googleHandler = () => {
     googleSignIn()
       .then((res) => {
-        console.log(res,'gggggggggghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+    
       
         const userInfo = {
           name: res?.user?.displayName,

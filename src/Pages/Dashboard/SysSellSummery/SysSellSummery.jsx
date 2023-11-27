@@ -3,6 +3,8 @@ import axios from 'axios';
 import useAllProducts from '../../../hooks/useAllProducts';
 import SalesProductInfo from '../SaleSummery/salesProductInfo';
 import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../../../hooks/useaxiosPublic';
 
 
 const SysSellSummery = () => {
@@ -12,7 +14,15 @@ const SysSellSummery = () => {
     // const invest= products?.product.reduce((total,item)=>total+item.buyPrice,0)
     // console.log(products,'djfkdjjjjjjjjjjj');
 
-
+    const { data } = useQuery({
+      queryKey: ['adminIncomebd'],
+      queryFn: async () => {
+        const adminIncome = await useAxiosPublic.get('/totalIncomeOfAdmin');
+        console.log(adminIncome, 'dkfjjjjjj');
+        return adminIncome.data;
+      }
+    });
+    console.log(data,'fjdkkf');
 
     if (!products || !products.product) {
      
@@ -47,8 +57,8 @@ const SysSellSummery = () => {
 <div className="stat-figure text-secondary">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 </div>
-<div className="stat-title">Total Sale</div>
-<div className="stat-value">{totalSaleCount}</div>
+<div className="stat-title">Income SysAdmin </div>
+<div className="stat-value">{data?.data}</div>
 <div className="stat-desc">Jan 1st - Feb 1st</div>
 </div>
 

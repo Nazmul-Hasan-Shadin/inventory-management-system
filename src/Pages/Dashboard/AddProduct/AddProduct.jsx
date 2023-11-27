@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import useaxiosSecure from '../../../hooks/useaxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosPublic from '../../../hooks/useaxiosPublic';
+import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
 const image_host_key=import.meta.env.VITE_IMAGE_API_KEY
 const image_host_api=`https://api.imgbb.com/1/upload?key=${image_host_key}`
 const AddProduct = ({singleProduct,isUpdate}) => {
@@ -71,6 +73,11 @@ const {user}=useAuth()
         axiosSecure.put(`/admin/product/update/${_id}`,productInfo)
         .then(res=>{
           console.log(res);
+
+          toast.success('Updated Succesfull')
+          
+
+
           return
         })
         .catch(err=>{
@@ -84,6 +91,15 @@ const {user}=useAuth()
     axiosSecure.post('/admin/products',productInfo)
     .then(res=>{
       console.log(result);
+
+      Swal.fire({
+        position: "top-end",
+        icon: "Product added Successful",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      
       console.log('product insert done');
     })
     .catch(error=>{

@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useaxiosPublic";
 import useStore from "../../hooks/useStore";
 import { Navigate, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const CreateStore = () => {
   const navigate=useNavigate()
   const {store}=useStore()
@@ -31,6 +32,14 @@ const CreateStore = () => {
 axiosPublic.post('/user-shop',shopInfo)
    .then(result=>{
     console.log(result);
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "successfully created store",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    
     if (store) {
        <Navigate to={'/dashboard'}></Navigate>
     }

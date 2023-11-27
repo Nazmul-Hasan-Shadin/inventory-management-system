@@ -11,7 +11,7 @@ const CheckOut = () => {
   const [clientSec, setClientSec] = useState('');
 
 const location=useLocation()
-const price= location.state.price
+const price= location?.state?.price
 
 console.log(location);
 
@@ -29,7 +29,7 @@ console.log(location);
    const cartIds=carts.map((cart)=>cart.cartId)
 
   useEffect(() => {
-    axiosSecure.post("/create-payment-intent", {price:price || total})
+    axiosSecure.post("/create-payment-intent", {price:price?price:total})
     .then((res) => {
       console.log(res.data,'paymentintent');
       setClientSec(res.data.clientSecret)
@@ -112,7 +112,7 @@ console.log(location);
       axiosSecure.patch(`/productLimit/${user?.email}`,{price:price})
       .then(res=>{
         console.log('limit increase');
-        axiosSecure.patch(`/adminIncome`,{email:'nazmulhasanshadin000@gmail.com'})
+        axiosSecure.patch(`/adminIncome`,{email:'nazmulhasanshadin000@gmail.com',price:price})
         .then(res=>{
            console.log('incoume increase')
         })
