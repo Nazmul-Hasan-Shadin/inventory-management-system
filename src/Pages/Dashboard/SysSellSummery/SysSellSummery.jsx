@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../../hooks/useaxiosPublic';
 import SysUsers from '../sysUsers/sysUsers';
+import { FaPeopleArrows, FaPeopleCarry } from 'react-icons/fa';
 
 
 
@@ -62,15 +63,16 @@ const SysSellSummery = () => {
     
 
     return (
-  <div>
-<div className="stats gap-5 shadow">
+  <div className=''>
+<div className="stats  gap-5 shadow">
   
  
 
 
-<div className="stat">
+ 
+ <div className="stat ">
 <div className="stat-figure text-secondary">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+  <FaPeopleArrows className='text-4xl'></FaPeopleArrows>
 </div>
 <div className="stat-title">Income of SysAdmin </div>
 <div className="stat-value"> $ {income?.adminIncomeData}</div>

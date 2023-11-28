@@ -4,24 +4,25 @@ const WhyChoiceUs = () => {
   return (
     <div>
       <div className="hero min-h-screen bg-[#FFFFFF]">
-        <div className="hero-content flex-col lg:flex-row px-36">
-          <div className="flex-1">
+        <div className="hero-content flex-col lg:flex-row lg:px-36">
+          <div className="flex-1  hidden lg:block">
             <img
               src="https://i.ibb.co/6vgTrX3/boy-img.png"
               className="max-w-sm rounded-lg shadow-2xl"
             />
           </div>
           <div className="flex-1">
-            <h1 className="text-5xl font-bold text-[#ff7b31]">Why Choose Us ?</h1>
-            <p className="py-6 text-gray-500  ">
+            <h1 className=" text-2xl lg:text-5xl font-bold text-[#ff7b31]">Why Choose Us ?</h1>
+            <p className="py-6 text-xs md:text-md text-gray-500  ">
             Choose us for seamless inventory control and real-time insights. Experience efficiency with our user-friendly interface and advanced features
             </p>
 
-            {/* accordion  */}
+            {/* ====================accordion======================  */}
 
             <div className="join join-vertical w-full">
+
   <div className="collapse collapse-arrow join-item border border-base-300">
-    <input type="radio" name="my-accordion-4" checked="checked" /> 
+    <input className="w-full" type="radio" name="my-accordion-4" checked="checked" /> 
     <div className="collapse-title text-xl font-medium">
     Efficient Tracking
     </div>

@@ -160,7 +160,7 @@ const Dashboard = () => {
       </div>
 
       {/* Admin content */}
-      <div className="flex-1">
+      <div className="flex-1 max-w-7xl mx-auto p-12">
         <Outlet></Outlet>
       </div>
     </div>
