@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex  ">
-      <div className="min-h-screen bg-orange-400">
+      <div className="min-h-screen bg-[#21263c] text-white">
         <ul className=" menu p-4">
           {/* =======================admin routes================================== */}
           {store.manager && (
@@ -122,7 +122,7 @@ const Dashboard = () => {
                 {" "}
                 <NavLink to={"/mainDashboard/all-store"}>
                   <FaHome></FaHome>
-                   System Admin  {" "}
+                   Shop Information  {" "}
                 </NavLink>{" "}
               </li>
 

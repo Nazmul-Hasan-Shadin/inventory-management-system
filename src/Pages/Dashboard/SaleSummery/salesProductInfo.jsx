@@ -59,7 +59,7 @@ products?.data.map((product)=> <tr key={product._id}>
         </div>
         <div>
        
-          <div className="text-sm opacity-50"> {product.name}</div>
+          <div className="text-sm opacity-50"> {product?.cartId?.map(item => item.name).join(', ')}</div>
         </div>
       </div>
     </td>

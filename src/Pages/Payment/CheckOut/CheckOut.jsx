@@ -97,7 +97,8 @@ console.log(location);
 
           date: new Date(),
           amount:paymentIntent.amount,
-          cartId:carts.map((cart)=>cart.cartId)
+          cartId:carts.map((cart)=>cart.cartId),
+        
 
         
         };
