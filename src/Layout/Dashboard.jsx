@@ -8,10 +8,11 @@ import {
 } from "react-icons/fa";
 import { CiViewTable } from "react-icons/ci";
 import useStore from "../hooks/useStore";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
   const [store, isManagerLoading] = useStore();
-
+ const {handleLogOut}=useAuth()
   return (
     <div className="flex  ">
       <div className="min-h-screen bg-[#21263c] text-white">
@@ -93,7 +94,7 @@ const Dashboard = () => {
 
               <li>
                 {" "}
-                <NavLink to={"/"}>
+                <NavLink onClick={()=>handleLogOut()} to={"/"}>
                   <FaHome></FaHome>
                   Logout{" "}
                 </NavLink>{" "}

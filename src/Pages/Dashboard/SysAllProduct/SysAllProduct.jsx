@@ -5,10 +5,11 @@ import useaxiosSecure from '../../../hooks/useaxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import useAuth from '../../../hooks/useAuth';
 const SysAllProduct = () => {
   const form = useRef();
 
-
+  const {user}=useAuth()
     const [products]=useShop()
 
 
@@ -17,6 +18,7 @@ const SysAllProduct = () => {
 
 
 const sendEmail = (e) => {
+
   e.preventDefault();
 
   emailjs.sendForm('service_mh4yybj', 'template_8p4zpwq', form.current, '05SFtOhQvrIffDR9G')
@@ -89,7 +91,7 @@ const sendEmail = (e) => {
 
 <textarea name='message'  placeholder="Bio" className="textarea textarea-bordered textarea-lg w-full max-w-xs" ></textarea>
 <label>Email</label>
-<input type="text" name='user_email' defaultValue={product.email} placeholder="Type here" className="input input-bordered input-info w-full max-w-xs" />
+<input type="text" name='user_email' defaultValue={user?.email} placeholder="Type here" className="input input-bordered input-info w-full max-w-xs" />
    
 <input type="submit" value="Send" />
 

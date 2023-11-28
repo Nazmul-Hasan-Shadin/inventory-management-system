@@ -82,6 +82,7 @@ console.log(location);
         },
       });
 
+
     if (cofirmError) {
       console.log(cofirmError,'error payment');
     } else {
@@ -107,8 +108,13 @@ console.log(location);
  
   axiosSecure.post("/paymentInfo",paymentInfo)
   .then(res=>{
-    // if payment succesfull then update quantity and saleCount based on these [id]
+    // if payment succesfull then update quantity and saleCount based on these [id
+
      axiosSecure.patch(`/updateQuantity/${cartIds.join(',')}`)
+    axiosSecure.delete(`/admin/cart/${user?.email}`)
+    .then(res=>console.log(res))
+    .catch(err=>console.log(err))
+
     if (price) {
       axiosSecure.patch(`/productLimit/${user?.email}`,{price:price})
       .then(res=>{

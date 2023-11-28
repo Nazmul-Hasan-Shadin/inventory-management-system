@@ -29,17 +29,26 @@ const {user}=useAuth()
 
         //  =====================upload image if succeess then add product==============================================
 
-
+        const buyingPrice = parseFloat(data.buyPrice);
+        const tax = buyingPrice * 0.075;
+        const profitPercentage = buyingPrice * (data.profit / 100);
+        const sellingPrice = buyingPrice + tax + profitPercentage;
 
   if(!isUpdate ){
 
+   try {
     const res=await axiosPublic.get(`/manager/products-count/${user?.email}`)
     if (res.count>=2 ) {
       console.log(res);
+     
       console.log('Product count limit reached. Payment needed for more products.');
       return;
     }
    
+   } catch (error) {
+      toast.error(error.response.data.message)
+      return
+   }
 
   }
 
@@ -52,6 +61,9 @@ const {user}=useAuth()
     })
     if (result.data.success) {
 
+  
+
+
       let productInfo= {
         cost:parseFloat(data.cost),
         desc:data.desc,
@@ -63,7 +75,8 @@ const {user}=useAuth()
         quantity: parseFloat(data.quantity),
         email:user?.email,
         buyPrice:parseFloat(data.buyPrice),
-        sellingPrice: parseFloat(data.buyPrice + data.buyPrice * 0.075 + data.buyPrice * data.profit / 100).toFixed(2),
+        // sellingPrice: parseFloat(data.buyPrice + data.buyPrice * 0.075 + data.buyPrice * data.profit / 100).toFixed(2),
+        sellingPrice:sellingPrice,
            
         saleCount:0
        }
@@ -210,7 +223,7 @@ const {user}=useAuth()
                 <label className="label">
                   <span className="label-text">Selling Price</span>
                 </label>
-                <input defaultValue={isUpdate && sellingPrice}  {...register("sellingPrice")} type="number" placeholder="Sell price"  className="input input-bordered" required />
+                <input defaultValue={isUpdate && sellingPrice}  {...register("sellingPrice")} type="number" placeholder="Sell price"  className="input input-bordered"  />
       
               </div>      
 
