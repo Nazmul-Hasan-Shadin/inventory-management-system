@@ -32,7 +32,8 @@ const {user}=useAuth()
         const buyingPrice = parseFloat(data.buyPrice);
         const tax = buyingPrice * 0.075;
         const profitPercentage = buyingPrice * (data.profit / 100);
-        const sellingPrice = buyingPrice + tax + profitPercentage;
+        const discountAmount = buyingPrice * (data.discount / 100);
+        const sellingPrice = buyingPrice + tax + profitPercentage-discountAmount
 
   if(!isUpdate ){
 

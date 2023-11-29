@@ -70,7 +70,7 @@ const Navbar = () => {
       )}
       <li>
         {" "}
-        <Link to={"/"}> Watch Demo</Link>
+        <Link to="/watch-demo" target="_blank"> Watch Demo</Link>
       </li>
     </>
   );

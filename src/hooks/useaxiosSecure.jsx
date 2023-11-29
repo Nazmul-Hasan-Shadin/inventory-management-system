@@ -11,9 +11,9 @@ const useaxiosSecure = () => {
    instance.interceptors.request.use(function (config) {
       // Do something before request is sent
       const token= localStorage.getItem('access-token')
-      console.log(config,'iam configfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+      // console.log(config,'iam configfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
       config.headers.authorization=`Bearer ${token}`
-      console.log('final config',config);
+      // console.log('final config',config);
       return config;
     }, function (error) {
       // Do something with request error

@@ -6,16 +6,58 @@ import { useQuery } from '@tanstack/react-query';
 
 const SysUsers = () => {
 
+const axiosSecure=useaxiosSecure()
+
+const {data:users,isLoading:alluserLoading}=useQuery({
+  queryKey: ['usersall'],
+  queryFn: async()=>{
+   const allusers= await axiosSecure.get('/users')
+   return allusers?.data.data
+  }
+})
+
+    const [products,isLoading]=useShop()
+
+if (isLoading || alluserLoading) {
+  return <span> loading</span>
+}
+
+ const combineDatas=[...products.data, ...users]
+
+//  find duplicate
+ const pureData=[]
+  for (const uniqueData of combineDatas) {
+      if (uniqueData && uniqueData.shopName) {
+         
+    
+        const checkExistData= pureData.find(item=>item.shopName===uniqueData.shopName)
+       
+          
+
+         if (!checkExistData) {
+          pureData.push(uniqueData)
+         }
 
 
-    const [products]=useShop()
+     
+      }
 
+
+      if (uniqueData && !uniqueData.shopName) {
+        const checkExistData= pureData.find(item=>item.email===uniqueData.email)
+          if (!checkExistData) {
+            pureData.push(uniqueData)
+          }
+     }
+
+
+  }
 
 
 
    
      
-     console.log(products,'djffffffffff');
+     console.log(pureData,'puredataa');
 
     return (
         <div>
@@ -34,13 +76,13 @@ const SysUsers = () => {
         <th>Shop Name </th>
       
         <th> Role</th>
-        <th>Promotion</th>
+      
       </tr>
     </thead>
     <tbody>
   
  {
-  products?.data?.map((product,index)=> <tr key={product._id}>
+  pureData.map((product,index)=> <tr key={product._id}>
         <th>
           <label>
           {index+1}
@@ -53,11 +95,11 @@ const SysUsers = () => {
         
     <td> {product.email} </td>
         </td>
-        <td> {product?.shopName} </td>
+        <td> {product?.shopName?product.shopName: 'No shop'} </td>
 
-        <td> {product?.roll} </td>
+        <td> {product?.roll ?product.roll: <button className='btn btn-outline btn-accent'>send Promotion Email</button>  } </td>
 
-        <td>  <button className='btn btn-outline btn-accent'>Promotion</button> </td>
+    
      
        
   

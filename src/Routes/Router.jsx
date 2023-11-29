@@ -19,12 +19,15 @@ import Subscription from "../Pages/Dashboard/Subscription/Subscription";
 import SysAllProduct from "../Pages/Dashboard/SysAllProduct/SysAllProduct";
 import SysSellSummery from "../Pages/Dashboard/SysSellSummery/SysSellSummery";
 import SysUsers from "../Pages/Dashboard/sysUsers/sysUsers";
+import WatchVideo from "../Pages/watchVIde/WatchVideo";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AddProduct2 from "../Pages/Dashboard/AddProduct/AddProduct2";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main />,
-    //   errorElement: <ErrorPage />,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: "/",
@@ -41,7 +44,12 @@ const router = createBrowserRouter([
         {
             path:'create-store',
             element:  <PrivateRoute><CreateStore></CreateStore></PrivateRoute>
-        }
+        },
+
+        {
+          path:'watch-demo',
+          element:  <WatchVideo></WatchVideo>
+      }
       ],
     },
  
@@ -52,6 +60,10 @@ const router = createBrowserRouter([
       {
         path:'/dashboard/managerHome',
         element: <ManagerRoutes><Dashboard></Dashboard></ManagerRoutes>
+      },
+      {
+        path:'/dashboard/addproduct-start',
+        element:  <ManagerRoutes><AddProduct2></AddProduct2></ManagerRoutes>
       },
       {
         path:'/dashboard/addproduct',

@@ -4,14 +4,17 @@ import useaxiosSecure from './useaxiosSecure';
 
 const useShop = () => {
     const axiosSecure=useaxiosSecure() 
-    const {data:products,isLoading}=useQuery({
+    const {data:products}=useQuery({
         queryKey:['shop-Info'],
         queryFn: async ()=>{
-          const result= await axiosSecure.get('/user-shop')
-          return result.data
+          const whoHaveShop= await axiosSecure.get('/user-shop')
+          const allusers= await axiosSecure.get('/users')
+          const result=  whoHaveShop.data
+          const alluserinfo= allusers.data.data
+          return result
         }
        })
-  return [products,isLoading]
+  return products
 };
 
 export default useShop;

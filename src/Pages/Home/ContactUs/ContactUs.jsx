@@ -17,14 +17,14 @@ const ContactUs = () => {
     
     
     
-     <div className='flex justify-center gap-5'>
-         <button className="btn btn-outline btn-secondary">
+     <div className='flex flex-col lg:flex-row justify-center  gap-5'>
+         <button className="btn btn-sm lg:btn-md  btn-outline btn-secondary">
             
          <IoCallSharp /> Call Us</button>
-         <button className="btn btn-outline btn-secondary">
+         <button className="btn btn-sm lg:btn-md  btn-outline btn-secondary">
             
          <MdMarkEmailRead />  Email us</button>
-         <button className="btn btn-outline btn-secondary">
+         <button className="btn btn-sm lg:btn-md btn-outline btn-secondary">
             
          <BsWhatsapp /> whatsapp</button>
      </div>

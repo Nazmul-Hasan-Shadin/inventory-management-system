@@ -12,11 +12,12 @@ import { FaPeopleArrows, FaPeopleCarry } from 'react-icons/fa';
 
 const SysSellSummery = () => {
   const axiosPublic= useAxiosPublic()
-    const [countt,setCount]=useState()
+    // const [countt,setCount]=useState()
     const [products]=useAllProducts()
     // const saleCount= products?.product.reduce((total,item)=>total+item.saleCount,0)
     // const invest= products?.product.reduce((total,item)=>total+item.buyPrice,0)
     // console.log(products,'djfkdjjjjjjjjjjj');
+  
 
     const { data:income } = useQuery({
       queryKey: ['adminIncomebd'],

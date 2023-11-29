@@ -38,7 +38,7 @@ const Dashboard = () => {
 
               <li>
                 {" "}
-                <NavLink to={"/dashboard/addproduct"}>
+                <NavLink to={"/dashboard/addproduct-start"}>
                   <FaPlus />
                   Add Product{" "}
                 </NavLink>{" "}
