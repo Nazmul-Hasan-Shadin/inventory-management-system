@@ -4,6 +4,8 @@ import useaxiosSecure from "../../../hooks/useaxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
 import { useLocation, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 
 const CheckOut = () => {
 
@@ -103,6 +105,7 @@ console.log(location);
 
         
         };
+        toast.success(`Succesfully Paymen ${paymentIntent.amount/100}`)
 
   //  if payment succes now insert payment info to saleCollection and update quantity of product
  
@@ -142,7 +145,11 @@ console.log(location);
 
   return (
     <div className="w-full">
+      
       <form onSubmit={handleSubmit}>
+      <Helmet>
+            <title> inven || payment </title>
+          </Helmet>
         <CardElement
           options={{
             style: {

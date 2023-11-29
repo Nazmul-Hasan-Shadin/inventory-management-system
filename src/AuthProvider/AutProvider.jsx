@@ -3,6 +3,7 @@ import { Children, createContext, useContext, useEffect, useState } from "react"
 import auth from "../firebase/firebase.config";
 import axios from "axios";
 import useAxiosPublic from "../hooks/useaxiosPublic";
+import useaxiosSecure from "../hooks/useaxiosSecure";
 
 
 export const AuthContext= createContext()
@@ -44,38 +45,30 @@ const AuthProvider=({children}) => {
 
   } 
     // observer
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, currentUser => {
+          setUser(currentUser)
+          // console.log('current user', currentUser)
+          if (currentUser) {
+              const userInfo = { email: currentUser.email }
+              axiosPublic.post('/jwt', userInfo)
+                  .then(res => {
+                      if (res.data.token) {
+                          localStorage.setItem('access-token', res.data.token);
+                      }
+                      setLoading(false)
+                  })
 
-  useEffect(()=>{
-  const unsubscribe= onAuthStateChanged(auth,user=>{
-     if (user) {
-        console.log(user)
-        setUser(user)
-        setLoading(false)
+          } else {
+              localStorage.removeItem('access-token');
+              setLoading(false)
+          }
 
-      if (user) {
-
-        const email= {email:user.email}
-        axiosPublic.post('/jwt',{email})
-        .then(res=>{
-        console.log(res);
-        localStorage.setItem('access-token',res.data.token)
-
-        })
+      })
+      return () => {
+          return unsubscribe
       }
-      else{
-        localStorage.removeItem('access-token')
-      }
-
-       
-     }
-
-     else{
-      setUser(null)
-     }
-  })
-  return ()=>unsubscribe()
-
-  },[]) 
+  }, [])
 
 
   const authInfo= {

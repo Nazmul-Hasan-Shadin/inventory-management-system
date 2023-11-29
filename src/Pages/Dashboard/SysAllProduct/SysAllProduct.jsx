@@ -36,7 +36,7 @@ const sendEmail = (e) => {
     return (
         <div>
           <Helmet>
-            <title> inven || allProduct </title>
+            <title> inven || allpro </title>
           </Helmet>
             <div className="overflow-x-auto">
   <table className="table">

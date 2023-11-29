@@ -1,4 +1,5 @@
 
+import { Helmet } from 'react-helmet-async';
 import {  useNavigate } from 'react-router-dom';
 
 const Subscription = () => {
@@ -11,7 +12,9 @@ const Subscription = () => {
     }
     return (
         <div className=' flex md:flex-row ml-3 gap-3 ' >
-          
+                    <Helmet>
+            <title> inven || subscr </title>
+          </Helmet>
 
 <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
 <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Standard plan</h5>

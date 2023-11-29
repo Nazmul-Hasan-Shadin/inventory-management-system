@@ -38,7 +38,7 @@ const Dashboard = () => {
 
               <li>
                 {" "}
-                <NavLink to={"/dashboard/addproduct-start"}>
+                <NavLink to={"/dashboard/addproduct"}>
                   <FaPlus />
                   Add Product{" "}
                 </NavLink>{" "}
@@ -59,14 +59,14 @@ const Dashboard = () => {
                   Payment{" "}
                 </NavLink>{" "}
               </li>
-
+{/* 
               <li>
                 {" "}
                 <NavLink to={"/dashboard/products"}>
                   <FaHome></FaHome>
                   product table{" "}
                 </NavLink>{" "}
-              </li>
+              </li> */}
 
               <li>
                 {" "}
@@ -123,7 +123,7 @@ const Dashboard = () => {
                 {" "}
                 <NavLink to={"/mainDashboard/all-store"}>
                   <FaHome></FaHome>
-                   Shop Information  {" "}
+                 All  Shop Information  {" "}
                 </NavLink>{" "}
               </li>
 
@@ -132,7 +132,7 @@ const Dashboard = () => {
                 {" "}
                 <NavLink to={"/mainDashboard/syssale-summery"}>
                   <FaHome></FaHome>
-                   Sales  Summery  {" "}
+                   Admin Sales  Summery  {" "}
                 </NavLink>{" "}
               </li>
         
@@ -141,7 +141,7 @@ const Dashboard = () => {
                 {" "}
                 <NavLink to={"/mainDashboard/all-users"}>
                   <FaHome></FaHome>
-                  Users  {" "}
+                Admin  Users  {" "}
                 </NavLink>{" "}
               </li>    
 

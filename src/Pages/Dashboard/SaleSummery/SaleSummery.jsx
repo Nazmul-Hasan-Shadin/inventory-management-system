@@ -1,4 +1,5 @@
 
+import { Helmet } from 'react-helmet-async';
 import useAllProducts from '../../../hooks/useAllProducts';
 import SalesProductInfo from './salesProductInfo';
 
@@ -31,6 +32,9 @@ const SaleSummery = () => {
 
     return (
   <div>
+              <Helmet>
+            <title> inven || sales </title>
+          </Helmet>
 <div className="stats gap-5 shadow">
   
  

@@ -3,9 +3,10 @@ import useAllProducts from "../../../hooks/useAllProducts";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useaxiosSecure from "../../../hooks/useaxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
-const ProductTable = () => {
+const ProductTable = ({refetchCount}) => {
     const [products,refetch]=useAllProducts()
     const axiosSecure=useaxiosSecure() 
 const handleDelete=(id)=>{
@@ -30,7 +31,7 @@ const handleDelete=(id)=>{
       })
 
       refetch()
-
+      refetchCount()
 
    })
    .catch(err=>{
@@ -45,7 +46,11 @@ const handleDelete=(id)=>{
 }
     return (
         <div>
+
             <div className="overflow-x-auto">
+            <Helmet>
+            <title> inven || control </title>
+          </Helmet>
   <table className="table">
     {/* head */}
     <thead>

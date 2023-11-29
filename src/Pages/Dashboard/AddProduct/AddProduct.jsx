@@ -8,6 +8,9 @@ import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
 const image_host_key=import.meta.env.VITE_IMAGE_API_KEY
 const image_host_api=`https://api.imgbb.com/1/upload?key=${image_host_key}`
+// const image_host_api = 'https://cors.bridged.cc/https://api.imgbb.com/1/upload?key=' + image_host_key;
+
+
 const AddProduct = ({singleProduct,isUpdate}) => {
 
    const {name,buyPrice,cost,desc,discount,email,image,location,profit,quantity,sellingPrice,_id}=singleProduct || {}
@@ -56,7 +59,7 @@ const {user}=useAuth()
 
  const file={image:data.image[0]}
          
-    const result=await axiosSecure.post(image_host_api,file,{
+    const result=await axiosPublic.post(image_host_api,file,{
        headers:{
         'content-type':'multipart/form-data'
        }

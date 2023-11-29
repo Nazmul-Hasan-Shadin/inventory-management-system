@@ -62,11 +62,11 @@ const router = createBrowserRouter([
         element: <ManagerRoutes><Dashboard></Dashboard></ManagerRoutes>
       },
       {
-        path:'/dashboard/addproduct-start',
+        path:'/dashboard/addproduct',
         element:  <ManagerRoutes><AddProduct2></AddProduct2></ManagerRoutes>
       },
       {
-        path:'/dashboard/addproduct',
+        path:'/dashboard/addproduct-final',
         element:  <ManagerRoutes><AddProduct></AddProduct></ManagerRoutes>
       },
       {

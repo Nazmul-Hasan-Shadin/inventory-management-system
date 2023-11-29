@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import useCart from '../../../hooks/useCart';
+import { Helmet } from 'react-helmet-async';
 
 const Cart = () => {
     const carts=useCart()
@@ -10,7 +11,11 @@ const Cart = () => {
 
     return (
         <div className='w-full'>
+		
             <div className="flex flex-col h-screen p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">
+			<Helmet>
+            <title> inventory || cart </title>
+          </Helmet>
 	<h2 className="text-xl font-semibold">Your cart</h2>
 	<ul className="flex flex-col divide-y dark:divide-gray-700">
 	{	carts.map(cart=>   <li key={cart._id} className="flex flex-col py-6 sm:flex-row sm:justify-between">
