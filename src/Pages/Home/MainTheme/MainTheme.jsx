@@ -7,14 +7,16 @@ import {TbWorldCog} from 'react-icons/tb'
 
 const MainTheme = () => {
     return (
-        <div className='bg-[#F3F4F6] p-14 pb-48'>
+        <div className='bg-[#F3F4F6] p-14 pb-48'  data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom "  data-aos-duration="1000">
           {/* <h2 className=' text-xl lg:text-3xl text-center'>Our Social Links</h2> */}
            <FeatureTitle heading={'Main Theme '} colorHeading={'Feature'} text={'What makes Dreams POS Powerfull'}></FeatureTitle>
          {/* container */}
            <div className='space-y-16' > 
            
             {/* row */}
-          <div className='grid grid-cols-2  md:grid-cols-5 gap-5'>
+          <div data-aos="fade-up"
+     data-aos-duration="2000" className='grid grid-cols-2  md:grid-cols-5 gap-5'>
          <div className='h-40 text-center'> 
             <div className='bg-[#f8f8fa] text-5xl p-12 '>
             <MdDashboardCustomize className='mx-auto' />
@@ -62,7 +64,8 @@ const MainTheme = () => {
           {/*=======================2nd row=================================  */}
 
 
-          <div className='grid grid-cols-2  md:grid-cols-4 gap-5  lg:px-28'>
+          <div data-aos="fade-up"
+     data-aos-duration="3000" className='grid grid-cols-2  md:grid-cols-4 gap-5  lg:px-28'>
          <div className='h-40 text-center'> 
             <div className='bg-[#f8f8fa] text-5xl p-12 '>
             <FaListUl className='mx-auto' />  
@@ -96,7 +99,8 @@ const MainTheme = () => {
           </div>
   {/* =========================3rd row================================== */}
   
-  <div className='grid grid-cols-2 md:grid-cols-5 gap-5'>
+  <div data-aos="fade-up"
+     data-aos-duration="3000" className='grid grid-cols-2 md:grid-cols-5 gap-5'>
          <div className='h-40 text-center'> 
             <div className='bg-[#f8f8fa] text-5xl p-12 '>
             <FaStar  className='mx-auto'  />

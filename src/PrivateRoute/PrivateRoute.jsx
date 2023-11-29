@@ -9,9 +9,9 @@ const PrivateRoute = ({children}) => {
    console.log(loading,'losd');
 
 
-   if (loading) {
-    return <span className="loading loading-ball loading-lg"></span>
- }
+//    if (loading) {
+//     return <span className="loading loading-ball loading-lg"></span>
+//  }
     if (user && !loading) {
         return children
     }

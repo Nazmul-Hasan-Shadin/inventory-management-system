@@ -1,8 +1,12 @@
 import React from "react";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 const WhyChoiceUs = () => {
+
+  AOS.init();
   return (
-    <div>
+    <div data-aos="fade-up"
+    data-aos-anchor-placement="top-bottom"    data-aos-duration="500">
       <div className="hero min-h-screen bg-[#FFFFFF]">
         <div className="hero-content flex-col lg:flex-row lg:px-36">
           <div className="flex-1  hidden lg:block">
@@ -11,7 +15,7 @@ const WhyChoiceUs = () => {
               className="max-w-sm rounded-lg shadow-2xl"
             />
           </div>
-          <div className="flex-1">
+          <div className="flex-1 " data-aos="zoom-out-left">
             <h1 className=" text-2xl lg:text-5xl font-bold text-[#ff7b31]">Why Choose Us ?</h1>
             <p className="py-6 text-xs md:text-md text-gray-500  ">
             Choose us for seamless inventory control and real-time insights. Experience efficiency with our user-friendly interface and advanced features
@@ -70,6 +74,7 @@ const WhyChoiceUs = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

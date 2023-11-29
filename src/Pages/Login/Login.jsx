@@ -7,8 +7,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useaxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import useStore from "../../hooks/useStore";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
+  
   const {store}=useStore()
   const axiosPublic = useAxiosPublic();
   const { googleSignIn, handleSignedIn, logOut, user } = useAuth();
@@ -77,6 +79,9 @@ const Login = () => {
 
   return (
     <div className="h-[100vh] p-5 lg:p-20 bg-[#F9FAFB]">
+            <Helmet>
+        <title> inventory || Login</title>
+       </Helmet>
       <form onSubmit={handleLogin}>
         <div className="flex flex-col space-y-4 h-[480] w-480 items-center justify-center p-10 ">
           <h2 className="text-2xl font-bold text-center">

@@ -8,11 +8,19 @@ import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useaxiosPublic";
 import useStore from "../../hooks/useStore";
+import { Helmet } from "react-helmet-async";
+
+
 
 const Register = () => {
+
+
+
   const { createUser, logOut, updateUser,user } = useAuth();
   const [store]=useStore()
   
+   
+
   const navigate = useNavigate();
   const location=useLocation()
   const axiosPublic= useAxiosPublic()
@@ -69,7 +77,13 @@ const Register = () => {
   };
 
   return (
+    <>  
+     
     <div className="hero min-h-screen  bg-base-200">
+
+    <Helmet>
+        <title> inventory || Reg</title>
+       </Helmet>
       <div className="hero-content flex-col">
         <div className="card flex-shrink-0 w-full max-w-sm   shadow-2xl bg-base-100">
           <h2 className="tect-center text-3xl">Register Now</h2>
@@ -172,6 +186,7 @@ const Register = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

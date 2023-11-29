@@ -4,6 +4,7 @@ import useAxiosPublic from "../../hooks/useaxiosPublic";
 import useStore from "../../hooks/useStore";
 import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 const CreateStore = () => {
   const navigate=useNavigate()
   const {store}=useStore()
@@ -55,6 +56,9 @@ axiosPublic.post('/user-shop',shopInfo)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+            <Helmet>
+        <title> inventory || shop create</title>
+       </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

@@ -4,7 +4,7 @@ import { TbWorldPlus } from 'react-icons/tb';
 
 const SocialLink = () => {
     return (
- <div>
+ <div  data-aos="zoom-in">
          <div className='grid w-full  grid-cols-1 md:grid-cols-3 my-6 px-5 lg-px'>
 
 <div>

@@ -6,6 +6,8 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import useAuth from '../../../hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
+import toast from 'react-hot-toast';
 const SysAllProduct = () => {
   const form = useRef();
 
@@ -24,6 +26,7 @@ const sendEmail = (e) => {
   emailjs.sendForm('service_mh4yybj', 'template_8p4zpwq', form.current, '05SFtOhQvrIffDR9G')
     .then((result) => {
         console.log(result.text);
+        toast.success('Notice send succesfull')
     }, (error) => {
         console.log(error.text);
     });
@@ -32,6 +35,9 @@ const sendEmail = (e) => {
 
     return (
         <div>
+          <Helmet>
+            <title> inven || allProduct </title>
+          </Helmet>
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
@@ -89,11 +95,14 @@ const sendEmail = (e) => {
 
 <form onSubmit={sendEmail}  ref={form} action="">
 
-<textarea name='message'  placeholder="Bio" className="textarea textarea-bordered textarea-lg w-full max-w-xs" ></textarea>
-<label>Email</label>
-<input type="text" name='user_email' defaultValue={user?.email} placeholder="Type here" className="input input-bordered input-info w-full max-w-xs" />
+<div className='flex flex-col gap-4 justify-center p-10'>
+<textarea name='message'  placeholder="write here your legendary notice  " className="textarea textarea-bordered textarea-lg w-full max-w-xs" ></textarea>
+
+<input type="text" name='from_name' defaultValue={product?.name} placeholder="Type here" className="input input-bordered input-info w-full max-w-xs" />
+<input type="text" name='user_email' defaultValue={product?.email} placeholder="Type here" className="input input-bordered input-info w-full max-w-xs" />
    
-<input type="submit" value="Send" />
+<button type='submit' className="btn btn-outline bg-red-700 text-white">Send Notice</button>
+</div>
 
 
   
@@ -103,6 +112,7 @@ const sendEmail = (e) => {
 
 
     <div className="modal-action">
+
       <form method="dialog">
         {/* if there is a button in form, it will close the modal */}
         <button className="btn">Close</button>
