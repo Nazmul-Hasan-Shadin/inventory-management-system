@@ -2,7 +2,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AiOutlineGithub } from "react-icons/ai";
 
 import toast from "react-hot-toast";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 import useAxiosPublic from "../../hooks/useaxiosPublic";
 import useAuth from "../../hooks/useAuth";
@@ -32,16 +32,20 @@ const Login = () => {
       .then((result) => {
         console.log('iam result',result);
         console.log(result);
-        navigate(location?.state ? location.state : "/");
+        toast.success('Login Successful')
+      
         //   try to find user stroe if available then redirect to dashboard
-        if (store.manager || store.sysAdmin) {
+        if (store) {
           navigate('/dashboard')
+        }
+        else{
+          navigate('/create-store')
         }
         
       })
 
       .catch((error) => {
-        toast.error(error.message);
+        // toast.error(error.message)
       });
   };
 

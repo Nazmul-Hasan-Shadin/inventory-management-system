@@ -10,8 +10,10 @@ import { CiViewTable } from "react-icons/ci";
 import useStore from "../hooks/useStore";
 import useAuth from "../hooks/useAuth";
 
+
 const Dashboard = () => {
   const [store, isManagerLoading] = useStore();
+
  const {handleLogOut}=useAuth()
   return (
     <div className="flex  ">
@@ -24,7 +26,9 @@ const Dashboard = () => {
                 {" "}
                 <NavLink to={"/"}>
                   <FaHome></FaHome>
-                  Shop Logos{" "}
+                 <span>
+                  <img src={''} alt="" />
+                 </span>
                 </NavLink>{" "}
               </li>
 
@@ -123,7 +127,7 @@ const Dashboard = () => {
                 {" "}
                 <NavLink to={"/mainDashboard/all-store"}>
                   <FaHome></FaHome>
-                 All  Shop Information  {" "}
+               Manage Shop {" "}
                 </NavLink>{" "}
               </li>
 

@@ -5,6 +5,7 @@ import useStore from "../../hooks/useStore";
 import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 const CreateStore = () => {
   const navigate=useNavigate()
   const {store}=useStore()
@@ -48,6 +49,7 @@ axiosPublic.post('/user-shop',shopInfo)
    })
    .catch(error=>{
     console.log(error);
+    toast.error('shop already exist please login')
    })
   
 

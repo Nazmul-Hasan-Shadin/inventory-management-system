@@ -110,13 +110,7 @@ const {user}=useAuth()
     .then(res=>{
       console.log(result);
 
-      Swal.fire({
-        position: "top-end",
-        icon: "Product added Successful",
-        title: "Your work has been saved",
-        showConfirmButton: false,
-        timer: 1500
-      });
+   toast.success('product added succesful')
       
       console.log('product insert done');
     })
