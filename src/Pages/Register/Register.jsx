@@ -9,6 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useaxiosPublic";
 import useStore from "../../hooks/useStore";
 import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 
 
@@ -24,6 +25,15 @@ const Register = () => {
   const navigate = useNavigate();
   const location=useLocation()
   const axiosPublic= useAxiosPublic()
+  useEffect(() => {
+    // Check if user is logged in and store manager is true, navigate to dashboard
+    if (user && !store?.manager) {
+      navigate('/create-store');
+    } 
+
+
+  }, [user, store?.manager, navigate]);
+
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -38,12 +48,7 @@ const Register = () => {
         updateUser(name, profile)
           .then((result) => {
        
-            //   if(!store){
-            //     // navigate('/create-store')
-            // <Navigate to={'/create-store'}></Navigate>
-            //   }
 
-            // navigate(location?.state ? location.state : "/");
             toast.success("Successfully Register");
          const userInfo={
            name,
@@ -52,8 +57,8 @@ const Register = () => {
          }
           //  post user information to db
           // posting
-          console.log(userInfo,'fkdjdkfuriiiiiiiiiiiiiiiiiiiiiiiik');
-          console.log(result);
+     
+          
        axiosPublic.post(`/users`,userInfo)
        .then(res=>{
         console.log(res);

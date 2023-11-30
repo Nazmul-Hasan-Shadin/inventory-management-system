@@ -12,7 +12,7 @@ import { useEffect } from "react";
 
 const Login = () => {
   
-  const {store}=useStore()
+  const [store]=useStore()
   const axiosPublic = useAxiosPublic();
   const { googleSignIn, handleSignedIn, logOut, user,loading } = useAuth();
   console.log(user,'iam user ho');
@@ -20,6 +20,18 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   console.log(location);
+  
+
+
+  useEffect(() => {
+    // Check if user is logged in and store manager is true, navigate to dashboard
+    if (user && store?.manager || store.sysadmin) {
+      navigate('/dashboard');
+    } else if (user && !store.manager) {
+      // If user is logged in but store manager is still false, navigate to create-store
+      navigate('/create-store');
+    }
+  }, [user, store?.manager, navigate,store.sysadmin]);
 
   const handleLogin = async(e) => {
     e.preventDefault();
@@ -29,15 +41,30 @@ const Login = () => {
 
     // ++++++++++++manual Login +++++++++++++++++
 
+    
+
     try {
       const result = await handleSignedIn(email, password);
-      if (store?.manager) {
-        navigate('/dashboard')
-      }
+      console.log(result,'manual login');
+      console.log(store?.manager,'before');
+       await result
+      await new Promise(resolve => setTimeout(resolve, 0));
+
+      // if ( store?.manager) {
+      //   navigate('/dashboard')
+      // }
+      // else{
+      //   navigate('/create-store')
+      // }
+
+   
+       console.log(store?.manager,'manager');
       console.log('iam result', result);
       console.log(result);
       toast.success('Login Successful');
-    } catch (error) {
+    } 
+    
+    catch (error) {
       toast.error(error.message);
       return;
     }
