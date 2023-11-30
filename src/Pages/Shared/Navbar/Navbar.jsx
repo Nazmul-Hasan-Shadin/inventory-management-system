@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-import logo from "../../../assets/logo2.png";
+import logo from "../../../assets/pos-logo.png";
 import useStore from "../../../hooks/useStore";
 import { AuthContext } from "../../../AuthProvider/AutProvider";
 
@@ -103,7 +103,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <img className="w-36 h-28 rounded-full" src={logo} alt="" />
+        <img className=" rounded-full" src={logo} alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -113,7 +113,7 @@ const Navbar = () => {
           <div>
             <p> {user?.displayName} </p>
           </div>
-          <div className="dropdown dropdown-end">
+          <div className="dropdown  left-8 dropdown-end ">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img src={user?.photoURL} />
@@ -125,15 +125,15 @@ const Navbar = () => {
             >
               <li>
                 <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
+                {user?.displayName}
+                
                 </a>
               </li>
               <li>
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <a onClick={handleLogout}>Logout</a>
               </li>
             </ul>
           </div>

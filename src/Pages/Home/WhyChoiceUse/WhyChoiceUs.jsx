@@ -15,7 +15,7 @@ const WhyChoiceUs = () => {
               className="max-w-sm rounded-lg shadow-2xl"
             />
           </div>
-          <div className="flex-1 " data-aos="zoom-out-left">
+          <div className="flex-1 " >
             <h1 className=" text-2xl lg:text-5xl font-bold text-[#ff7b31]">Why Choose Us ?</h1>
             <p className="py-6 text-xs md:text-md text-gray-500  ">
             Choose us for seamless inventory control and real-time insights. Experience efficiency with our user-friendly interface and advanced features
