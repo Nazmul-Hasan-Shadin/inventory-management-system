@@ -4,6 +4,7 @@ import MainTheme from '../MainTheme/MainTheme';
 import SocialLink from '../SocialLink/SocialLink';
 import ContactUs from '../ContactUs/ContactUs';
 import { Helmet } from 'react-helmet-async';
+import Banner from '../Banner/Banner';
 
 
 const Home = () => {
@@ -12,6 +13,8 @@ const Home = () => {
        <Helmet>
         <title> inventory  || Home </title>
        </Helmet>
+  <Banner></Banner>
+
     <WhyChoiceUs></WhyChoiceUs>
 
     <MainTheme ></MainTheme>
