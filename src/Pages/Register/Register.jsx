@@ -38,12 +38,12 @@ const Register = () => {
         updateUser(name, profile)
           .then((result) => {
        
-              if(!store){
-                // navigate('/create-store')
-            <Navigate to={'/create-store'}></Navigate>
-              }
+            //   if(!store){
+            //     // navigate('/create-store')
+            // <Navigate to={'/create-store'}></Navigate>
+            //   }
 
-            navigate(location?.state ? location.state : "/");
+            // navigate(location?.state ? location.state : "/");
             toast.success("Successfully Register");
          const userInfo={
            name,
@@ -52,8 +52,8 @@ const Register = () => {
          }
           //  post user information to db
           // posting
-          console.log(userInfo,'fkdjdkfk');
-          console.log('posting');
+          console.log(userInfo,'fkdjdkfuriiiiiiiiiiiiiiiiiiiiiiiik');
+          console.log(result);
        axiosPublic.post(`/users`,userInfo)
        .then(res=>{
         console.log(res);
@@ -72,7 +72,7 @@ const Register = () => {
           });
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log(err);
       });
   };
 

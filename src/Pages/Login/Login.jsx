@@ -135,7 +135,7 @@ const Login = () => {
             </button>
           </span>
 
-          <Link className="text-blue-700" to={"/signup"}>
+          <Link className="text-blue-700" to={"/register"}>
             {" "}
             Register Now
           </Link>

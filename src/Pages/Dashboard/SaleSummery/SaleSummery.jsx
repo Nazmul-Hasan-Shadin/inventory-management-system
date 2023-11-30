@@ -31,11 +31,11 @@ const SaleSummery = () => {
     
 
     return (
-  <div>
+  <div className='overflow-x-auto'>
               <Helmet>
             <title> inven || sales </title>
           </Helmet>
-<div className="stats gap-5 shadow">
+<div className="stats  shadow">
   
  
 

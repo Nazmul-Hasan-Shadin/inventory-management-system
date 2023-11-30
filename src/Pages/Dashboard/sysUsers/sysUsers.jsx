@@ -55,6 +55,7 @@ const SysUsers = () => {
     }
   }
 
+  console.log(pureData,'purrrrrrrrrrrrrrrrrrrrrrr');
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -118,7 +119,10 @@ const SysUsers = () => {
           </thead>
           <tbody>
             {startPagi.map((product, index) => (
+           
               <tr key={product._id}>
+
+                
                 <th>
                   <label>{index + 1}</label>
                 </th>

@@ -51,7 +51,7 @@ const handleDelete=(id)=>{
             <Helmet>
             <title> inven || control </title>
           </Helmet>
-  <table className="table">
+  <table className="table ">
     {/* head */}
     <thead>
       <tr>
@@ -71,7 +71,7 @@ const handleDelete=(id)=>{
     <tbody>
   
  {
-  products?.product?.map((product,index)=> <tr key={product._id}>
+  products?.product?.map((product,index)=> <tr className="" key={product._id}>
         <th>
           <label>
           {index+1}

@@ -11,7 +11,7 @@ const Subscription = () => {
 
     }
     return (
-        <div className=' flex md:flex-row ml-3 gap-3 ' >
+        <div className=' flex flex-col md:flex-row ml-3 gap-3 ' >
                     <Helmet>
             <title> inven || subscr </title>
           </Helmet>

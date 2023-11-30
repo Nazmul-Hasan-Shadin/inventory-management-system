@@ -31,7 +31,7 @@ const SysSellSummery = () => {
       }
     });
 
-    console.log(income);
+    console.log(income,'incomeejjjjjjjjjjjjjj');
 
   
   

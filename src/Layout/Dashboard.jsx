@@ -16,9 +16,9 @@ const Dashboard = () => {
 
  const {handleLogOut}=useAuth()
   return (
-    <div className="flex  ">
-      <div className="min-h-screen bg-[#21263c] text-white">
-        <ul className=" menu p-4">
+    <div className="flex  flex-col lg:flex-row  ">
+      <div className="   lg:min-h-screen w-full lg:w-[300px] bg-[#21263c] text-white">
+        <ul className=" menu p-4 overflow-x-auto">
           {/* =======================admin routes================================== */}
           {store.manager && (
             <>
@@ -165,7 +165,7 @@ const Dashboard = () => {
       </div>
 
       {/* Admin content */}
-      <div className="flex-1 max-w-7xl mx-auto p-12">
+      <div className="flex-1 max-w-sm lg:max-w-7xl mx-auto p-12">
         <Outlet></Outlet>
       </div>
     </div>
