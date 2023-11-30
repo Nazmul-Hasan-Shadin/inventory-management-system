@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import logo from "../../../assets/pos-logo.png";
 import useStore from "../../../hooks/useStore";
 import { AuthContext } from "../../../AuthProvider/AutProvider";
-
+import avatar from '../../../assets/download.png'
 const Navbar = () => {
   const { user } = useContext(AuthContext);
   const { handleLogOut: handleSignOut, loading } = useAuth();
@@ -115,9 +115,17 @@ const Navbar = () => {
           </div>
           <div className="dropdown  left-8 dropdown-end ">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
+
+             { user? <div className="w-10 rounded-full">
                 <img src={user?.photoURL} />
-              </div>
+              </div>:           <div className="w-10 rounded-full">
+              <img src={avatar} />
+            </div>
+              
+              }
+
+     
+
             </label>
             <ul
               tabIndex={0}

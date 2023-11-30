@@ -19,7 +19,7 @@ const Banner = () => {
         <img className="absolute top-7 lg:top-9 right-0  h-40 lg:h-full " src="https://i.ibb.co/TtytPD0/girl.png" alt="" />
 
           </div>
-          <div className="flex-1 text-center space-y-5 pb-8 lg:p"  data-aos="zoom-out-left">
+          <div className="flex-1 text-center space-y-5 pb-8 lg:p"  >
           <p className=" text-xl lg:text-3xl font-bold ">
 The Most Customizable</p>
             <h1 className=" text-2xl lg:text-4xl font-bold text-[#ff7b31]">
