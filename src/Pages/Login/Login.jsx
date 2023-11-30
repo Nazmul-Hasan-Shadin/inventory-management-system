@@ -8,19 +8,20 @@ import useAxiosPublic from "../../hooks/useaxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import useStore from "../../hooks/useStore";
 import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 const Login = () => {
   
   const {store}=useStore()
   const axiosPublic = useAxiosPublic();
-  const { googleSignIn, handleSignedIn, logOut, user } = useAuth();
+  const { googleSignIn, handleSignedIn, logOut, user,loading } = useAuth();
   console.log(user,'iam user ho');
   console.log(user);
   const location = useLocation();
   const navigate = useNavigate();
   console.log(location);
 
-  const handleLogin = (e) => {
+  const handleLogin = async(e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
@@ -28,26 +29,26 @@ const Login = () => {
 
     // ++++++++++++manual Login +++++++++++++++++
 
-    handleSignedIn(email, password)
-      .then((result) => {
-        console.log('iam result',result);
-        console.log(result);
-        toast.success('Login Successful')
-      
-        //   try to find user stroe if available then redirect to dashboard
-        if (store) {
-          navigate('/dashboard')
-        }
-        else{
-          navigate('/create-store')
-        }
-        
-      })
+    try {
+      const result = await handleSignedIn(email, password);
+      if (store?.manager) {
+        navigate('/dashboard')
+      }
+      console.log('iam result', result);
+      console.log(result);
+      toast.success('Login Successful');
+    } catch (error) {
+      toast.error(error.message);
+      return;
+    }
 
-      .catch((error) => {
-        // toast.error(error.message)
-      });
-  };
+
+ 
+  }
+
+    
+
+  
 
   const googleHandler = () => {
     googleSignIn()

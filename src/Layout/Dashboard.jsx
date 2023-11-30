@@ -42,7 +42,7 @@ const Dashboard = () => {
 
               <li>
                 {" "}
-                <NavLink to={"/dashboard/addproduct"}>
+                <NavLink to={"/dashboard"}>
                   <FaPlus />
                   Add Product{" "}
                 </NavLink>{" "}

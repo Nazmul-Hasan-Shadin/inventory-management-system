@@ -7,12 +7,12 @@ const Main = () => {
     const location= useLocation()
     const loginPage=location.pathname.includes('/login')
     const registerPage= location.pathname.includes('/register')
-
+  const specialError= location.pathname.includes('/unauthorized')
     return (
         <div>
-      {  !loginPage && !registerPage &&  <Navbar></Navbar>}
+      {  !loginPage && !registerPage &&  !specialError &&  <Navbar></Navbar>}
                 <Outlet></Outlet>
-           {  !loginPage && !registerPage &&   <Footer></Footer>}
+           {  !loginPage && !registerPage && !specialError &&   <Footer></Footer>}
         </div>
     );
 };

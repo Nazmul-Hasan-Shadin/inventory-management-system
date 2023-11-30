@@ -22,6 +22,8 @@ import SysUsers from "../Pages/Dashboard/sysUsers/sysUsers";
 import WatchVideo from "../Pages/watchVIde/WatchVideo";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AddProduct2 from "../Pages/Dashboard/AddProduct/AddProduct2";
+import AdminRoutes from "../PrivateRoute/AdminRoutes";
+import PageError from "../PrivateRoute/SpecialError";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +35,11 @@ const router = createBrowserRouter([
           path: "/",
           element: <Home />,
         },
+        {
+          path:'/unauthorized',
+          element: <PageError></PageError>
+        }
+        ,
         {
             path:'login',
             element: <Login></Login>
@@ -57,13 +64,14 @@ const router = createBrowserRouter([
     path:'/dashboard',
     element:<Dashboard></Dashboard>,
     children:[
+
+      {
+        path:'/dashboard',
+        element:  <ManagerRoutes><AddProduct2></AddProduct2></ManagerRoutes>
+      },
       {
         path:'/dashboard/managerHome',
         element: <ManagerRoutes><Dashboard></Dashboard></ManagerRoutes>
-      },
-      {
-        path:'/dashboard/addproduct',
-        element:  <ManagerRoutes><AddProduct2></AddProduct2></ManagerRoutes>
       },
       {
         path:'/dashboard/addproduct-final',
@@ -71,11 +79,11 @@ const router = createBrowserRouter([
       },
       {
         path:'/dashboard/payment',
-        element: <Payment></Payment>
+        element: <ManagerRoutes><Payment></Payment></ManagerRoutes>
       },
       {
         path:'/dashboard/products',
-        element: <ProductTable></ProductTable>
+        element: <PrivateRoute><ProductTable></ProductTable></PrivateRoute>
       },
       {
         path:'/dashboard/update/:id',
@@ -96,11 +104,11 @@ const router = createBrowserRouter([
       },
       {
         path:'/dashboard/sell-summery',
-        element: <SaleSummery></SaleSummery>
+        element: <ManagerRoutes><SaleSummery></SaleSummery></ManagerRoutes>
       },
       {
         path:'/dashboard/subscription',
-        element: <Subscription></Subscription>
+        element:  <ManagerRoutes><Subscription></Subscription></ManagerRoutes>
       },
 
       
@@ -116,15 +124,15 @@ const router = createBrowserRouter([
     children:[
       {
         path:'/mainDashboard/all-store',
-        element:<SysAllProduct></SysAllProduct>
+        element:<AdminRoutes><SysAllProduct></SysAllProduct></AdminRoutes>
       },
       {
         path:'/mainDashboard/syssale-summery',
-        element: <SysSellSummery></SysSellSummery>
+        element:<AdminRoutes> <SysSellSummery></SysSellSummery></AdminRoutes>
       },
       {
         path:'/mainDashboard/all-users',
-        element: <SysUsers></SysUsers>
+        element: <AdminRoutes><SysUsers></SysUsers></AdminRoutes>
       }
     ]
   }

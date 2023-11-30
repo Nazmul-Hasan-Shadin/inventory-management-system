@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom';
 const ManagerRoutes = ({children}) => {
     const {user,loading}=useAuth()
     const [store,isManagerLoading]=useStore()
- 
+   console.log(store,'store');
     if (loading || isManagerLoading) {
         return   <span className="loading loading-ball loading-lg"></span>
     }

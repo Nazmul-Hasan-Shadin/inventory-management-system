@@ -152,7 +152,7 @@ const {user}=useAuth()
                   <span className="label-text">product img</span>
                 </label>
 
-  <input defaultValue={isUpdate && image}  {...register("image")} type="file" className="file-input file-input-bordered w-full max-w-xs" />
+  <input required defaultValue={isUpdate && image}  {...register("image")} type="file" className="file-input file-input-bordered w-full max-w-xs" />
 
           
               </div>
@@ -217,7 +217,7 @@ const {user}=useAuth()
                 <label className="label">
                   <span className="label-text">Buying Price</span>
                 </label>
-                <input defaultValue={isUpdate && buyPrice}  {...register("buyPrice")} type="text" placeholder="Buy price"  className="input input-bordered"  />
+                <input required defaultValue={isUpdate && buyPrice}  {...register("buyPrice")} type="number" placeholder="Buy price"  className="input input-bordered"  />
       
               </div>      
 
@@ -225,7 +225,7 @@ const {user}=useAuth()
                 <label className="label">
                   <span className="label-text">Selling Price</span>
                 </label>
-                <input defaultValue={isUpdate && sellingPrice}  {...register("sellingPrice")} type="number" placeholder="Sell price"  className="input input-bordered"  />
+                <input readOnly defaultValue={isUpdate && sellingPrice}  {...register("sellingPrice")} type="number" placeholder="its will auto generate"  className="input input-bordered"  />
       
               </div>      
 
