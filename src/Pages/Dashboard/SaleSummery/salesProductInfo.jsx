@@ -69,7 +69,7 @@ products?.data.map((product)=> <tr key={product._id}>
     </td>
  
     <td> 
-       <td>$ <span>  {product?.cartId.reduce((initialPrice,item)=>initialPrice+ (item.sellingPrice-item.buyPrice),0)}  </span> </td>
+       <td>$ <span>  {product?.cartId.reduce((initialPrice,item)=>initialPrice+ (item.sellingPrice-item.buyPrice),0).toFixed(2)}  </span> </td>
        
      </td>
  
