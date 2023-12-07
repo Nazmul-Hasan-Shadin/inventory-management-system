@@ -101,7 +101,7 @@ const SysUsers = () => {
 
 
   return (
-    <div>
+    <div className="">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

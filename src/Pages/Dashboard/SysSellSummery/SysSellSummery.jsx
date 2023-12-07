@@ -64,8 +64,8 @@ const SysSellSummery = () => {
     
 
     return (
-  <div className=''>
-<div className="stats  gap-5 shadow">
+  <div className='overflow-x-auto'>
+<div className="stats  stats-vertical lg:stats-horizontal  gap-5 shadow">
   
  
 
@@ -106,7 +106,7 @@ const SysSellSummery = () => {
  {/*============================ sales product==================== */}
   
 <div className='my-5'>
-  <h2 className='text-3xl text-center'> All Users Section</h2>
+  <h2 className='text-3xl text-center text-[#FF00D3]'> All Users Section</h2>
 <SysUsers></SysUsers>
 </div>
   </div>

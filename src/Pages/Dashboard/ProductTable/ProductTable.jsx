@@ -47,7 +47,7 @@ const handleDelete=(id)=>{
     return (
         <div>
 
-            <div className="overflow-x-auto">
+            <div className="">
             <Helmet>
             <title> inven || control </title>
           </Helmet>

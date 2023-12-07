@@ -16,10 +16,10 @@ const Dashboard = () => {
 
  const {handleLogOut}=useAuth()
   return (
-    <div className="flex  flex-col lg:flex-row  ">
+    <div className="flex  m-0 flex-col lg:flex-row  ">
       {/* <div className="   lg:min-h-screen w-full lg:w-[300px] bg-[#21263c] text-white"> */}
 
-      <div className="drawer lg:drawer-open z-20">
+      <div className="drawer  lg:drawer-open z-20">
   <input id="my-drawer" type="checkbox" className="drawer-toggle" />
   <div className="flex-none lg:hidden">
         <label htmlFor="my-drawer" aria-label="open sidebar" className="btn btn-square btn-ghost">
@@ -184,7 +184,7 @@ const Dashboard = () => {
       {/* </div> */}
 
       {/* Admin content */}
-      <div className=" max-w-sm lg:max-w-7xl mx-auto p-12">
+      <div className=" max-w-sm   lg:max-w-7xl mx-auto md:p-12">
         <Outlet></Outlet>
       </div>
     </div>

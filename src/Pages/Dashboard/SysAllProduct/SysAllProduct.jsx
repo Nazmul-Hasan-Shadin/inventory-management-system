@@ -34,7 +34,7 @@ const sendEmail = (e) => {
    
 
     return (
-        <div>
+        <div className=''>
           <Helmet>
             <title> inven || allpro </title>
           </Helmet>
@@ -90,13 +90,13 @@ const sendEmail = (e) => {
       {/* Open the modal using document.getElementById('ID').showModal() method */}
 <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>  Send Notice </button>
 <dialog id="my_modal_1" className="modal">
-  <div className="modal-box">
+  <div className="modal-box ">
   
 
 <form onSubmit={sendEmail}  ref={form} action="">
 
-<div className='flex flex-col gap-4 justify-center p-10'>
-<textarea name='message'  placeholder="write here your legendary notice  " className="textarea textarea-bordered textarea-lg w-full max-w-xs" ></textarea>
+<div className='flex flex-col gap-4 justify-center  p-10'>
+<textarea name='message'  placeholder="write here your legendary notice  " className="textarea  textarea-bordered textarea-lg w-full max-w-xs" ></textarea>
 
 <input type="text" name='from_name' defaultValue={product?.name} placeholder="Type here" className="input input-bordered input-info w-full max-w-xs" />
 <input type="text" name='user_email' defaultValue={product?.email} placeholder="Type here" className="input input-bordered input-info w-full max-w-xs" />
