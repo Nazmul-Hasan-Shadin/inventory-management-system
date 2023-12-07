@@ -45,9 +45,9 @@ const handleDelete=(id)=>{
       });
 }
     return (
-        <div>
+        <div className="">
 
-            <div className="">
+            <div className="w-[100%]">
             <Helmet>
             <title> inven || control </title>
           </Helmet>
