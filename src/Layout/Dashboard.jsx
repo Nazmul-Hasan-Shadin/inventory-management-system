@@ -17,8 +17,20 @@ const Dashboard = () => {
  const {handleLogOut}=useAuth()
   return (
     <div className="flex  flex-col lg:flex-row  ">
-      <div className="   lg:min-h-screen w-full lg:w-[300px] bg-[#21263c] text-white">
-        <ul className=" menu p-4 overflow-x-auto">
+      {/* <div className="   lg:min-h-screen w-full lg:w-[300px] bg-[#21263c] text-white"> */}
+
+      <div className="drawer lg:drawer-open z-20">
+  <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+  <div className="flex-none lg:hidden">
+        <label htmlFor="my-drawer" aria-label="open sidebar" className="btn btn-square btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </label>
+      </div> 
+  <div className="drawer-side  ">
+    <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
+  
+      {/* Sidebar content here */}
+      <ul className=" menu p-4 w-80 min-h-full bg-base-200 text-base-content">
           {/* =======================admin routes================================== */}
           {store.manager && (
             <>
@@ -162,10 +174,17 @@ const Dashboard = () => {
 
 
         </ul>
-      </div>
+      
+
+  </div>
+</div>
+
+
+    
+      {/* </div> */}
 
       {/* Admin content */}
-      <div className="flex-1 max-w-sm lg:max-w-7xl mx-auto p-12">
+      <div className=" max-w-sm lg:max-w-7xl mx-auto p-12">
         <Outlet></Outlet>
       </div>
     </div>

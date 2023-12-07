@@ -148,7 +148,7 @@ axiosPublic.post('/user-shop',shopInfo)
                   placeholder="Owner"
              
                   className="input input-bordered"
-                  readOnly
+                  
                 />
               </div>
             </div>

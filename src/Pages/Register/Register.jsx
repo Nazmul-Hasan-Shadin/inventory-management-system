@@ -25,14 +25,7 @@ const Register = () => {
   const navigate = useNavigate();
   const location=useLocation()
   const axiosPublic= useAxiosPublic()
-  useEffect(() => {
-    // Check if user is logged in and store manager is true, navigate to dashboard
-    if (user && !store?.manager) {
-      navigate('/create-store');
-    } 
 
-
-  }, [user, store?.manager, navigate]);
 
 
   const handleFormSubmit = (e) => {
@@ -50,6 +43,7 @@ const Register = () => {
        
 
             toast.success("Successfully Register");
+            navigate('/')
          const userInfo={
            name,
            email,
@@ -80,6 +74,18 @@ const Register = () => {
         console.log(err);
       });
   };
+
+
+  // useEffect(() => {
+  //   // Check if user is logged in and store manager is true, navigate to dashboard
+  //   if (user && !store?.manager) {
+  //     navigate('/create-store');
+  //   } 
+
+
+  // }, [user, store?.manager, navigate]);
+
+
 
   return (
     <>  
