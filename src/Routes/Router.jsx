@@ -24,6 +24,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AddProduct2 from "../Pages/Dashboard/AddProduct/AddProduct2";
 import AdminRoutes from "../PrivateRoute/AdminRoutes";
 import PageError from "../PrivateRoute/SpecialError";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
     {
@@ -126,6 +127,11 @@ const router = createBrowserRouter([
     path:'/mainDashboard',
     element:<Dashboard></Dashboard>,
     children:[
+      {
+        path:'/mainDashboard',
+        element: <AdminHome></AdminHome>
+      }
+      ,
       {
         path:'/mainDashboard/all-store',
         element:<AdminRoutes><SysAllProduct></SysAllProduct></AdminRoutes>

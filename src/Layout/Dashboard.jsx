@@ -172,7 +172,7 @@ const Dashboard = () => {
 
                    <li>
                 {" "}
-                <NavLink to={"/"}>
+                <NavLink to={"/mainDashboard"}>
                   <FaHome></FaHome>
                   Home  {" "}
                 </NavLink>{" "}
