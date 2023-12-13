@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAllProducts from '../../../hooks/useAllProducts';
 import { FaEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -9,7 +9,10 @@ import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
 
 const ProductSection = () => {
-    const [products]=useAllProducts()
+   
+  const [search,setSearch]= useState('')
+
+    const [products]=useAllProducts(search)
     const axiosSecure=useaxiosSecure()
     const {user}=useAuth()
 const handlAddToCart=async(product)=>{
@@ -39,6 +42,13 @@ const handlAddToCart=async(product)=>{
 
 }
 
+const handleSearch=(e)=>{
+  e.preventDefault()
+   const search= e.target.search.value;
+   setSearch(search)
+  
+}
+
 
     return (
         <div>
@@ -46,6 +56,16 @@ const handlAddToCart=async(product)=>{
             <title> inventory || product </title>
           </Helmet>
         <div className="overflow-x-auto">
+
+
+
+
+ <form action="" onSubmit={handleSearch}>
+ <input type="text" name='search' placeholder="search here" className="input w-full max-w-xs" />
+ <input type="submit" className='btn' />
+ </form>
+
+
 <table className="table">
 {/* head */}
 <thead>

@@ -4,7 +4,8 @@ import useaxiosSecure from './useaxiosSecure';
 import useAuth from './useAuth';
 import useStore from './useStore';
 
-const useAllProducts = () => {
+const useAllProducts = (search) => {
+  console.log(search);
     const [store]=useStore()
     const {user,loading}=useAuth()
     console.log(user,'from all');
@@ -19,7 +20,7 @@ const useAllProducts = () => {
       return res.data
     }
 
-    const res= await axiosSecure.get(`/admin/products/${user?.email}`)
+    const res= await axiosSecure.get(`/admin/products/${user?.email}?search=${search}`)
     return res.data
  } catch (error) {
     console.log(error);

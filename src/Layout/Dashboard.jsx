@@ -9,6 +9,7 @@ import {
 import { CiViewTable } from "react-icons/ci";
 import useStore from "../hooks/useStore";
 import useAuth from "../hooks/useAuth";
+import Avatar from "../Components/Avatar/Avatar";
 
 
 const Dashboard = () => {
@@ -18,8 +19,10 @@ const Dashboard = () => {
   return (
     <div className="flex  m-0 flex-col lg:flex-row  ">
       {/* <div className="   lg:min-h-screen w-full lg:w-[300px] bg-[#21263c] text-white"> */}
+    
+    <div className=" w-80">
 
-      <div className="drawer  lg:drawer-open z-20">
+    <div className="drawer  lg:drawer-open z-20">
   <input id="my-drawer" type="checkbox" className="drawer-toggle" />
   <div className="flex-none lg:hidden">
         <label htmlFor="my-drawer" aria-label="open sidebar" className="btn btn-square btn-ghost">
@@ -30,8 +33,14 @@ const Dashboard = () => {
     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
   
       {/* Sidebar content here */}
-      <ul className=" menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+             {/* profile image */}
+
+
+{/* porfile image end */}
+
+      <ul className=" menu p-4 w-80 min-h-full bg-base-200 text-base-content  ">
           {/* =======================admin routes================================== */}
+          <Avatar></Avatar>
           {store.manager && (
             <>
               <li>
@@ -178,6 +187,7 @@ const Dashboard = () => {
 
   </div>
 </div>
+    </div>
 
 
     
