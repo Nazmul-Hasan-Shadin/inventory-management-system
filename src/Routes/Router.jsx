@@ -66,11 +66,10 @@ const router = createBrowserRouter([
     element:<Dashboard></Dashboard>,
     children:[
 
+ 
       {
-        path:'/dashboard',
-        element:  <ManagerRoutes><AddProduct2></AddProduct2></ManagerRoutes>
-      },
-      {
+        index:true,
+        
         path:'/dashboard',
         element:  <ManagerRoutes><AddProduct2></AddProduct2></ManagerRoutes>
       },
@@ -128,8 +127,10 @@ const router = createBrowserRouter([
     element:<Dashboard></Dashboard>,
     children:[
       {
+        index: true,
         path:'/mainDashboard',
-        element: <AdminHome></AdminHome>
+      
+        element: <AdminRoutes> <AdminHome></AdminHome></AdminRoutes>
       }
       ,
       {

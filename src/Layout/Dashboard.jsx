@@ -1,11 +1,14 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import {
+  FaCartArrowDown,
   FaCartPlus,
   FaHome,
   FaList,
   FaPlus,
   FaProductHunt,
+  FaUsers,
 } from "react-icons/fa";
+import {MdManageAccounts} from 'react-icons/md'
 import { CiViewTable } from "react-icons/ci";
 import useStore from "../hooks/useStore";
 import useAuth from "../hooks/useAuth";
@@ -38,99 +41,91 @@ const Dashboard = () => {
 
 {/* porfile image end */}
 
-      <ul className=" menu p-4 w-80 min-h-full bg-base-200 text-base-content  ">
+      <ul className=" menu p-4 w-60 min-h-full bg-slate-900 fixed  text-white  ">
           {/* =======================admin routes================================== */}
           <Avatar></Avatar>
           {store.manager && (
             <>
-              <li>
-                {" "}
-                <NavLink to={"/"}>
-                  <FaHome></FaHome>
-                 <span>
-                  <img src={''} alt="" />
-                 </span>
-                </NavLink>{" "}
-              </li>
+   
 
               <li>
                 {" "}
-                <NavLink to={"/"}>
+                <Link to={"/"}>
                   <FaList></FaList>
                   admin Menues{" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
 
               <li>
                 {" "}
-                <NavLink to={"/dashboard"}>
+                <Link to={"/dashboard"}>
                   <FaPlus />
                   Add Product{" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
 
               <li>
                 {" "}
-                <NavLink to={"/"}>
+                <Link to={"/"}>
                   <FaHome></FaHome>
                   admin Home{" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
 
               <li>
                 {" "}
-                <NavLink to={"/dashboard/payment"}>
+                <Link to={"/dashboard/payment"}>
                   <FaHome></FaHome>
                   Payment{" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
 {/* 
               <li>
                 {" "}
-                <NavLink to={"/dashboard/products"}>
+                <Link to={"/dashboard/products"}>
                   <FaHome></FaHome>
                   product table{" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li> */}
 
               <li>
                 {" "}
-                <NavLink to={"/dashboard/all-product"}>
+                <Link to={"/dashboard/all-product"}>
                   <CiViewTable />
                   All Proucts{" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
 
               <li>
                 {" "}
-                <NavLink to={"/dashboard/checkout/paid"}>
+                <Link to={"/dashboard/checkout/paid"}>
                   <FaCartPlus></FaCartPlus>
                   Carts{" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
 
               <li>
                 {" "}
-                <NavLink to={"/dashboard/sell-summery"}>
+                <Link to={"/dashboard/sell-summery"}>
                   <FaCartPlus></FaCartPlus>
                   Sale Summery{" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
 
               <li>
                 {" "}
-                <NavLink onClick={()=>handleLogOut()} to={"/"}>
+                <Link onClick={()=>handleLogOut()} to={"/"}>
                   <FaHome></FaHome>
                   Logout{" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
 
               <li>
                 {" "}
-                <NavLink to={"/dashboard/subscription"}>
+                <Link to={"/dashboard/subscription"}>
                   <FaHome></FaHome>
                   subscription{" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
             </>
           ) 
@@ -146,36 +141,36 @@ const Dashboard = () => {
       
       <li>
                 {" "}
-                <NavLink to={"/mainDashboard/all-store"}>
-                  <FaHome></FaHome>
+                <Link to={"/mainDashboard/all-store"}>
+                <MdManageAccounts />
                Manage Shop {" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
 
 
               <li>
                 {" "}
-                <NavLink to={"/mainDashboard/syssale-summery"}>
-                  <FaHome></FaHome>
+                <Link to={"/mainDashboard/syssale-summery"}>
+                <FaCartArrowDown/>
                    Admin Sales  Summery  {" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>
         
 
               <li>
                 {" "}
-                <NavLink to={"/mainDashboard/all-users"}>
-                  <FaHome></FaHome>
+                <Link to={"/mainDashboard/all-users"}>
+                <FaUsers/>
                 Admin  Users  {" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>    
 
                    <li>
                 {" "}
-                <NavLink to={"/mainDashboard"}>
+                <Link to={"/mainDashboard"}>
                   <FaHome></FaHome>
                   Home  {" "}
-                </NavLink>{" "}
+                </Link>{" "}
               </li>                
       
       </>

@@ -25,6 +25,8 @@ const SysSellSummery = () => {
 
   return (
     <div className="overflow-x-auto">
+        
+     
       <div className="stats  stats-vertical lg:stats-horizontal  gap-5 shadow">
         <div className="stat ">
           <div className="stat-figure text-secondary">
@@ -73,7 +75,7 @@ const SysSellSummery = () => {
             </svg>
           </div>
           <div className="stat-title">Total Sales</div>
-          <div className="stat-value">{totalProfit}</div>
+          <div className="stat-value">$ {totalProfit}</div>
           <div className="stat-desc">Jan 1st - Feb 1st</div>
         </div>
       </div>

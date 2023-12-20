@@ -7,7 +7,7 @@ const AdminStat = ({title,value}) => {
   
             <div className="stat place-items-center">
     <div className="stat-title">{title}</div>
-    <div className="stat-value"> {value} </div>
+    <div className="stat-value">$ {value} </div>
     <div className="stat-desc">From January 1st to February 1st</div>
   </div>
   

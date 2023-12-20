@@ -39,6 +39,7 @@ const sendEmail = (e) => {
             <title> inven || allpro </title>
           </Helmet>
             <div className="overflow-x-auto">
+              <h2 className='text-center text-xl font-bold mb-7'>Users With Shop</h2>
   <table className="table">
     {/* head */}
     <thead>

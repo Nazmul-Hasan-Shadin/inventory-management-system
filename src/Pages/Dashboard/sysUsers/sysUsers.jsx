@@ -26,7 +26,7 @@ const SysUsers = () => {
   const [products, isLoading] = useShop();
 
   if (isLoading || alluserLoading) {
-    return <span> loading</span>;
+    return <span className="loading loading-dots loading-lg"></span>;
   }
 
   const combineDatas = [...products.data, ...users];
