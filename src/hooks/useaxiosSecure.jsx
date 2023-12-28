@@ -3,8 +3,8 @@ import useAuth from '../hooks/useAuth'
 import { Navigate } from 'react-router-dom';
 
  const instance= axios.create({
-    // baseURL:'http://localhost:5001',
-    baseURL:'https://inventory-server-six.vercel.app'
+    baseURL:'http://localhost:5001',
+    // baseURL:'https://inventory-server-six.vercel.app'
    
 })
 const useaxiosSecure = () => {
@@ -12,7 +12,7 @@ const useaxiosSecure = () => {
    instance.interceptors.request.use(function (config) {
       // Do something before request is sent
       const token= localStorage.getItem('access-token')
-      // console.log(config,'iam configfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+      console.log(config,'iam configfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
       config.headers.authorization=`Bearer ${token}`
       // console.log('final config',config);
       return config;

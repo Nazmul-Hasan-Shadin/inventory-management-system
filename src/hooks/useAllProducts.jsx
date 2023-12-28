@@ -5,10 +5,13 @@ import useAuth from './useAuth';
 import useStore from './useStore';
 
 const useAllProducts = (search) => {
+  //    find all prodouct of user by email and for admin get all product of all user
   console.log(search);
+  // admin role and manager role check by store
     const [store]=useStore()
+
     const {user,loading}=useAuth()
-    console.log(user,'from all');
+ 
     const axiosSecure=useaxiosSecure()
   const {data:products,refetch,isLoading}=useQuery({
   queryKey:['manager-products'],
