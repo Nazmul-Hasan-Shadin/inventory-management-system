@@ -10,8 +10,10 @@ const useShop = () => {
           const result= await axiosSecure.get('/user-shop')
           return result.data
         }
+     
        })
-  return [products,isLoading]
+       const shopLength= products?.length
+  return [products,isLoading,shopLength]
 };
 
 export default useShop;

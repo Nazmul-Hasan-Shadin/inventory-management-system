@@ -1,9 +1,10 @@
 
 import useAuth from '../hooks/useAuth';
 import useStore from '../hooks/useStore';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const ManagerRoutes = ({children}) => {
+   
     const {user,loading}=useAuth()
     const [store,isManagerLoading]=useStore()
    console.log(store,'store');
@@ -11,8 +12,12 @@ const ManagerRoutes = ({children}) => {
         return   <span className="loading loading-ball loading-lg"></span>
     }
 
-     if (user && store) {
+     if (user && store.manager) {
          return children
+     }
+
+     if (user && store.sysadmin) {
+         return <Navigate to={'/mainDashboard'}></Navigate>
      }
 
 

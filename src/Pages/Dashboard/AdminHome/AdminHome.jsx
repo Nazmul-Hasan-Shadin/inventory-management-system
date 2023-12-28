@@ -3,10 +3,15 @@ import AdminStat from '../../../Components/AdminStat/AdminStat';
 import useAdminUtility from '../../../hooks/useAdminUtility';
 import useAdminStats from '../../../hooks/useAdminStats';
 import { Bar, BarChart, CartesianGrid, Cell, Label, Legend, Tooltip, XAxis, YAxis } from 'recharts';
+import useShop from '../../../hooks/useShop';
+import RecentShop from '../../../Components/RecentShop/RecentShop';
 
 const AdminHome = () => {
     const { totalSaleCount, totalInvest, totalProfit } = useAdminUtility();
     const income = useAdminStats();
+    const [products,isLoading]=useShop()
+  
+
   
     const dynamicData = {
         Sales: totalSaleCount,
@@ -45,25 +50,29 @@ const getPath = (x, y, width, height) => {
          profit:totalProfit,
          totalInvest:totalInvest
     }))
-    console.log(data);
+
     
 
- 
+
 
     return (
-        <>
+        <div className='w-full'>
         <h2 className='text-2xl p-5'>Dashboard</h2>
-                <div className='flex gap-4'>
-              <AdminStat title={'Total Revenue'} value={income?.adminIncomeData} ></AdminStat>
-              <AdminStat title={'Total product'} value={income?.productCountData} ></AdminStat>
-            <AdminStat title={'profit'} value={totalProfit?.toFixed(2)} ></AdminStat>
 
+        {/* ===================card======================================= */}
+                <div className='grid grid-cols-1 w-full  md:grid-cols-2 lg:grid-cols-4  gap-4 justify-items-center' >
+              <AdminStat bg={'#FF9F43'} title={'Total Revenue'} value={income?.adminIncomeData} ></AdminStat>
+              <AdminStat bg={'#00CFE8'} title={'Total product'} value={income?.productCountData} ></AdminStat>
+            <AdminStat bg={'#1B2850'} title={'profit'} value={totalProfit?.toFixed(2)} ></AdminStat>
+            <AdminStat shop={true} bg={'#28C76F'} title={'Total Shop'} value={products?.data.length} ></AdminStat>
         </div>
-        {/* Bar chart  */}
+        {/*========================= Bar chart==================================== */}
 
    
                                
   <div className='my-8 flex flex-col lg:flex-row items-center'>
+
+    {/* ========================bar chart=========================== */}
  <div>
  <BarChart width={430} height={250} data={data}>
 <CartesianGrid strokeDasharray="3 3" />
@@ -104,7 +113,9 @@ const getPath = (x, y, width, height) => {
 
   </div>
 
-        </>
+  <RecentShop></RecentShop>
+
+        </div>
 
     );
 };
