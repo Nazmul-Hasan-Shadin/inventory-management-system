@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useaxiosSecure from "../../../hooks/useaxiosSecure";
 import { Helmet } from "react-helmet-async";
+import SearchSection from "../../../Components/Product/SearchSection";
 
 const ProductTable = ({ refetchCount }) => {
   const [products, refetch] = useAllProducts();
@@ -43,21 +44,7 @@ const ProductTable = ({ refetchCount }) => {
   return (
     <div>
  
- <div className="flex bg-[#FFFFFF] p-12  justify-between">
-        <div className="flex gap-5 items-center">
-        <FaFilter  className="text-4xl"/>
-          <input type="text" placeholder="Type here" className="input input-bordered h-11 input-primary w-full  max-w-xs" />
-        </div>
-
-        <Link to={"/dashboard/addproduct-final"}>
-         <span className="text-2xl flex gap-3">
-          <FaPrint className="text-green-500"></FaPrint>
-          <FaFilePdf className="text-red-700"></FaFilePdf>
-          <FaList></FaList>
-         </span>
-      </Link>
-        
-      </div>
+ <SearchSection></SearchSection>
 
       <div className="w-[100%]">
         <Helmet>
@@ -133,7 +120,7 @@ const ProductTable = ({ refetchCount }) => {
                       {" "}
                       <button className="btn">
                         {" "}
-                        <FaEdit></FaEdit>{" "}
+                        <FaEdit className="text-xl"></FaEdit>{" "}
                       </button>{" "}
                     </td>
                   </Link>{" "}

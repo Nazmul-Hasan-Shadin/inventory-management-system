@@ -61,14 +61,15 @@ const Dashboard = () => {
               <Avatar></Avatar>
               {store.manager && (
                 <>
-                  <li>
+                                  <li>
                     {" "}
                     <Link to={"/"}>
-                      <FaList></FaList>
-                      admin Menues{" "}
+                      <FaHome></FaHome>
+                      admin Home{" "}
                     </Link>{" "}
                   </li>
 
+               
                   <li>
                     {" "}
                     <Link to={"/dashboard"}>
@@ -77,13 +78,6 @@ const Dashboard = () => {
                     </Link>{" "}
                   </li>
 
-                  <li>
-                    {" "}
-                    <Link to={"/"}>
-                      <FaHome></FaHome>
-                      admin Home{" "}
-                    </Link>{" "}
-                  </li>
 
                   <li>
                     {" "}
