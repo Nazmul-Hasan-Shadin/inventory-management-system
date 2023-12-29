@@ -4,9 +4,12 @@ import useaxiosSecure from "../../../hooks/useaxiosSecure";
 import emailjs from "@emailjs/browser";
 import { useQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react";
+import SearchSection from "../../../Components/Product/SearchSection";
+import { FaTrashAlt } from "react-icons/fa";
 
 const SysUsers = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [products, isLoading] = useShop();
   const perPage=10;
   const initalIndex= currentPage * perPage
   const lastIndex= initalIndex + perPage
@@ -14,7 +17,7 @@ const SysUsers = () => {
 
   const form = useRef();
   const axiosSecure = useaxiosSecure();
-
+          // ==========================================get all registerd user==================================================================
   const { data: users, isLoading: alluserLoading } = useQuery({
     queryKey: ["usersall"],
     queryFn: async () => {
@@ -23,7 +26,7 @@ const SysUsers = () => {
     },
   });
 
-  const [products, isLoading] = useShop();
+
 
   if (isLoading || alluserLoading) {
     return <span className="loading loading-dots loading-lg"></span>;
@@ -102,30 +105,38 @@ const SysUsers = () => {
 
   return (
     <div className="">
+ 
+     <SearchSection></SearchSection>
+
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
-          <thead>
+          <thead className="bg-[#FAFBFE]">
             <tr>
               <th>
                 <label>#</label>
               </th>
+              <th>Image</th>
               <th>Name </th>
-              <th>Email</th>
+              <th>Emakidddddddddddl</th>
               <th>Shop Name </th>
 
               <th> Role</th>
+              <th className="text-black">Delete</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-[#FFFFFF]">
             {startPagi.map((product, index) => (
            
               <tr key={product._id}>
 
-                
+          
                 <th>
                   <label>{index + 1}</label>
                 </th>
+                <th>
+                  <img className="w-16 rounded-full" src={product?.photo} alt="" />
+                 </th>
                 <td>
                   <td> {product.shopName}</td>
                 </td>
@@ -193,6 +204,25 @@ const SysUsers = () => {
                     </>
                   )}
                 </td>
+
+
+
+           
+                <td>
+                  {" "}
+                  <button
+                   
+                    className="btn"
+                  >
+                    {" "}
+                    <FaTrashAlt className="text-xl text-red-600"></FaTrashAlt>{" "}
+                  </button>{" "}
+                </td>
+
+
+
+
+
               </tr>
             ))}
           </tbody>

@@ -13,6 +13,7 @@ import { CiViewTable } from "react-icons/ci";
 import useStore from "../hooks/useStore";
 import useAuth from "../hooks/useAuth";
 import Avatar from "../Components/Avatar/Avatar";
+import AdminNavbar from "../Pages/Shared/AdminNavbar/AdminNavbar";
 
 const Dashboard = () => {
   const [store, isManagerLoading] = useStore();
@@ -176,6 +177,7 @@ const Dashboard = () => {
 
       {/* Admin content */}
       <div className=" w-full  lg:max-w-7xl mx-auto md:p-12">
+        <AdminNavbar></AdminNavbar>
         <Outlet></Outlet>
       </div>
     </div>

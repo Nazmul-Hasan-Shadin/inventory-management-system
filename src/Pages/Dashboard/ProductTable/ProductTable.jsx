@@ -1,15 +1,35 @@
-import { FaCross, FaEdit, FaFilePdf, FaFilter, FaList, FaPlus, FaPrint, FaTrashAlt } from "react-icons/fa";
+import {
+  FaCross,
+  FaEdit,
+  FaFilePdf,
+  FaFilter,
+  FaList,
+  FaPlus,
+  FaPrint,
+  FaTrashAlt,
+} from "react-icons/fa";
 import useAllProducts from "../../../hooks/useAllProducts";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useaxiosSecure from "../../../hooks/useaxiosSecure";
 import { Helmet } from "react-helmet-async";
 import SearchSection from "../../../Components/Product/SearchSection";
+import useAxiosPublic from "../../../hooks/useaxiosPublic";
+import useAuth from "../../../hooks/useAuth";
+import { useRef, useState } from "react";
+import ProductTableRow from "./ProductTableRow";
 
 const ProductTable = ({ refetchCount }) => {
+  const debounceTimer = useRef(null);
+  console.log(debounceTimer,'iam ref bro');
   const [products, refetch] = useAllProducts();
+  const [ishandleSearch, setIsHandleSearch] = useState(false);
+  const [searchContent, setSearchContent] = useState([]);
+
+  const { user } = useAuth();
   console.log(products);
   const axiosSecure = useaxiosSecure();
+  const axiosPublic = useAxiosPublic();
 
   //  ==========================handle Delete product=======================================
   const handleDelete = (id) => {
@@ -41,10 +61,44 @@ const ProductTable = ({ refetchCount }) => {
       }
     });
   };
+
+  // ===============================product hand;esearch for manager=======================================================
+
+  const handleSearch = async (search) => {
+ 
+
+      setIsHandleSearch(true);
+    
+
+    try {
+      const searchQury = await axiosPublic.get(
+        `/productSearch?search=${search}&&email=${user?.email}`
+      );
+      setSearchContent(searchQury);
+      console.log(searchQury);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  const debouncedSearch=(e)=>{
+    e.preventDefault();
+    const form = new FormData(document.querySelector('form'));
+      
+    const search = form.get("search");
+
+    // clearTimeout(debounceTimer.current);
+
+     debounceTimer.current=setTimeout(()=>{
+        handleSearch(search)
+     },300)
+
+  }
+
   return (
     <div>
- 
- <SearchSection></SearchSection>
+      <SearchSection handleSearch={debouncedSearch}></SearchSection>
 
       <div className="w-[100%]">
         <Helmet>
@@ -57,7 +111,7 @@ const ProductTable = ({ refetchCount }) => {
               <th>
                 <label>#</label>
               </th>
-             
+
               <th className="text-black">Product image </th>
               <th className="text-black">Name</th>
               <th className="text-black">Sale Count</th>
@@ -71,73 +125,21 @@ const ProductTable = ({ refetchCount }) => {
             </tr>
           </thead>
           <tbody className="bg-[#FFFFFF]">
-            {products?.product?.map((product, index) => (
-              <tr className="" key={product._id}  >
-                <th>
-                  <label>{index + 1}</label>
-                </th>
-               
-                <td>
-                  <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle  h-16">
-                        <img src={product?.image} />
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="text-black">{product.name}</td>
-                <td>
-                  <span className="badge badge-ghost badge-sm">
-                    Sale Count: {product.saleCount}{" "}
-                  </span>
-                </td>
-
-                <td> {product?.quantity} </td>
-
-                <td>
-                  <span className="badge badge-ghost badge-sm">
-                    $ {product?.sellingPrice}
-                  </span>
-                </td>
-
-                <td>
-                  <span className="badge badge-ghost badge-sm">
-                    $ {product?.buyPrice}
-                  </span>
-                </td>
-
-                <td>
-                  <span className="badge badge-ghost badge-sm">
-                    {product?.location}
-                  </span>
-                </td>
-
-                <td>
-                  {" "}
-                  <Link to={`/dashboard/update/${product._id}`}>
-                    <td>
-                      {" "}
-                      <button className="btn">
-                        {" "}
-                        <FaEdit className="text-xl"></FaEdit>{" "}
-                      </button>{" "}
-                    </td>
-                  </Link>{" "}
-                </td>
-
-                <td>
-                  {" "}
-                  <button
-                    onClick={() => handleDelete(product._id)}
-                    className="btn"
-                  >
-                    {" "}
-                    <FaTrashAlt className="text-xl text-red-600"></FaTrashAlt>{" "}
-                  </button>{" "}
-                </td>
-              </tr>
-            ))}
+            {ishandleSearch
+              ? searchContent?.data?.map((product, index) => (
+                  <ProductTableRow
+                    handleDelete={handleDelete}
+                    key={index}
+                    product={product}
+                  ></ProductTableRow>
+                ))
+              : products?.product?.map((product, index) => (
+                  <ProductTableRow
+                    handleDelete={handleDelete}
+                    key={index}
+                    product={product}
+                  ></ProductTableRow>
+                ))}
           </tbody>
         </table>
       </div>

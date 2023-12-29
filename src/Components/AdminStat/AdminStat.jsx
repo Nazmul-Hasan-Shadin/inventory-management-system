@@ -1,3 +1,4 @@
+import CountUp from 'react-countup';
 import useAllProducts from '../../hooks/useAllProducts';
 const AdminStat = ({title,value,bg,shop}) => {
 
@@ -8,7 +9,7 @@ const AdminStat = ({title,value,bg,shop}) => {
   
             <div className="stat  place-items-center">
     <div className="stat-title text-white">{title}</div>
-    <div className="stat-value text-white"> <span> {`${shop? '':'$'}`} </span> {value} </div>
+    <div className="stat-value text-white"> <span> {`${shop? '':'$'}`} </span>  <CountUp end={value}></CountUp> </div>
     <div className="stat-desc text-white">From January 1st to February 1st</div>
   </div>
   
