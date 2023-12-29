@@ -6,15 +6,7 @@ import useAxiosPublic from "./useaxiosPublic"
 const useStore=()=>{
     const {user,loading}= useAuth()
     const axiosPublic=useAxiosPublic()
-//    try {
-   
-//     
-//        const isStore= await axiosPublic.get(`/users?email=${user?.email}`)
-//     //    console.log(isStore.data.store,'store');
-//           return isStore.data.store
-//    } catch (error) {
-//       return false
-//    }
+
 
    const {data:store=[],isPending:isManagerLoading}= useQuery({
     queryKey:[user?.email,'store'],

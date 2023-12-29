@@ -1,13 +1,4 @@
-import {
-  FaCross,
-  FaEdit,
-  FaFilePdf,
-  FaFilter,
-  FaList,
-  FaPlus,
-  FaPrint,
-  FaTrashAlt,
-} from "react-icons/fa";
+
 import useAllProducts from "../../../hooks/useAllProducts";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -18,14 +9,16 @@ import useAxiosPublic from "../../../hooks/useaxiosPublic";
 import useAuth from "../../../hooks/useAuth";
 import { useRef, useState } from "react";
 import ProductTableRow from "./ProductTableRow";
+import useSearch from "../../../hooks/useSearch";
 
 const ProductTable = ({ refetchCount }) => {
   const debounceTimer = useRef(null);
   console.log(debounceTimer,'iam ref bro');
   const [products, refetch] = useAllProducts();
   const [ishandleSearch, setIsHandleSearch] = useState(false);
-  const [searchContent, setSearchContent] = useState([]);
 
+   
+  const{debouncedSearch,searchContent}=useSearch()
   const { user } = useAuth();
   console.log(products);
   const axiosSecure = useaxiosSecure();
@@ -64,41 +57,24 @@ const ProductTable = ({ refetchCount }) => {
 
   // ===============================product hand;esearch for manager=======================================================
 
-  const handleSearch = async (search) => {
+  const handleSearch = async (e) => {
  
-
-      setIsHandleSearch(true);
+    e.preventDefault();
+    const form = new FormData(document.querySelector('form'));
+    const searchString = form.get('search');
+    setIsHandleSearch(true);
+    debouncedSearch(searchString, user?.email);
+ 
     
 
-    try {
-      const searchQury = await axiosPublic.get(
-        `/productSearch?search=${search}&&email=${user?.email}`
-      );
-      setSearchContent(searchQury);
-      console.log(searchQury);
-    } catch (error) {
-      console.log(error);
-    }
+   
   };
 
 
-  const debouncedSearch=(e)=>{
-    e.preventDefault();
-    const form = new FormData(document.querySelector('form'));
-      
-    const search = form.get("search");
-
-    // clearTimeout(debounceTimer.current);
-
-     debounceTimer.current=setTimeout(()=>{
-        handleSearch(search)
-     },300)
-
-  }
 
   return (
     <div>
-      <SearchSection handleSearch={debouncedSearch}></SearchSection>
+      <SearchSection handleSearch={handleSearch}></SearchSection>
 
       <div className="w-[100%]">
         <Helmet>
