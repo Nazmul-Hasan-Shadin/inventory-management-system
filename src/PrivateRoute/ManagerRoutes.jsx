@@ -9,7 +9,7 @@ const ManagerRoutes = ({children}) => {
     const [store,isManagerLoading]=useStore()
    console.log(store,'store');
     if (loading || isManagerLoading) {
-        return   <span className="loading loading-ball loading-lg"></span>
+        return   <span className="loading loading-ball mx-auto text-9xl loading-lg"></span>
     }
 
      if (user && store.manager) {

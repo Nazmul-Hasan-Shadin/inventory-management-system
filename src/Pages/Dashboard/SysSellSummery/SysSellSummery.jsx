@@ -24,7 +24,7 @@ const SysSellSummery = () => {
   // console.log(data,'iam data bro');
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto  ">
         
      
       <div className="stats  stats-vertical lg:stats-horizontal  gap-5 shadow">
@@ -82,7 +82,7 @@ const SysSellSummery = () => {
 
       {/*============================ sales product==================== */}
 
-      <div className="my-5">
+      <div className="my-5  ">
         <h2 className="text-3xl text-center text-[#FF00D3]">
           {" "}
           All Users Section

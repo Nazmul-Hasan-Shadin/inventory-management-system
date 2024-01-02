@@ -176,7 +176,7 @@ const Dashboard = () => {
       {/* </div> */}
 
       {/* Admin content */}
-      <div className=" w-full  lg:max-w-7xl mx-auto md:p-12">
+      <div className=" w-full  lg:max-w-7xl mx-auto md:p-12 lg:p-0">
         <AdminNavbar></AdminNavbar>
         <Outlet></Outlet>
       </div>
