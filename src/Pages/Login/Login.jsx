@@ -131,11 +131,11 @@ const Login = () => {
             </div>
             <span>Or Continiou With</span>
             <span className="flex gap-10">
-              <button onClick={() => googleHandler()} className="btn">
+              <button onClick={() => googleHandler()} className="btn bg-orange-500 text-white">
                 {" "}
                 <FcGoogle className="text-2xl"> </FcGoogle> Google
               </button>
-              <button className="btn bg-black text-white">
+              <button className="btn bg-orange-500 text-white">
                 {" "}
                 <AiOutlineGithub className="text-2xl"></AiOutlineGithub> Github
               </button>

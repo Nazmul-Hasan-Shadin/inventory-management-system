@@ -44,14 +44,14 @@ const AddProduct2 = () => {
         </button>
       </Link> */}
 
-<div className="flex bg-[#FAFBFE] p-12  justify-between">
+<div className="flex bg-[#FAFBFE] p-4 lg:p-12  justify-between">
         <div>
-          <h2 className="text-2xl">Total Product</h2>
+          <h2 className="text-xl md:text-2xl">Total Product</h2>
           <p>Manage Your Product</p>
         </div>
 
         <Link to={"/dashboard/addproduct-final"}>
-        <button className="btn px-10 bg-[#FF9F43]">
+        <button className="btn text-white text-xs lg:text-xl  lg:px-10 bg-[#FF9F43]">
           {" "}
           <FaPlus /> Add Product
         </button>

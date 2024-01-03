@@ -9,7 +9,7 @@ const AdminNavbar = () => {
   const {user}= useContext(AuthContext)
     return (
         <div>
-            <div className="navbar justify-between bg-base-100">
+            <div className="navbar justify-between overflow-x-auto bg-base-100">
             <div className="form-control  relative  ">
       <input type="text" placeholder="Search" className="input input-bordered pl-12 w-60 bg-[#F6F6F7] h-10 md:w-auto" />
       <IoIosSearch className="absolute start-3 text-xl top-1/3" />

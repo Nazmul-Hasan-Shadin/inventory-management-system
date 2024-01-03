@@ -13,16 +13,16 @@ import useSearch from "../../../hooks/useSearch";
 
 const ProductTable = ({ refetchCount }) => {
   const debounceTimer = useRef(null);
-  console.log(debounceTimer,'iam ref bro');
+
   const [products, refetch] = useAllProducts();
   const [ishandleSearch, setIsHandleSearch] = useState(false);
 
    
   const{debouncedSearch,searchContent}=useSearch()
   const { user } = useAuth();
-  console.log(products);
+
   const axiosSecure = useaxiosSecure();
-  const axiosPublic = useAxiosPublic();
+
 
   //  ==========================handle Delete product=======================================
   const handleDelete = (id) => {
@@ -73,16 +73,16 @@ const ProductTable = ({ refetchCount }) => {
 
 
   return (
-    <div>
+    <div >
       <SearchSection handleSearch={handleSearch}></SearchSection>
 
-      <div className="w-[100%]">
+      <div className="w-[100%] overflow-x-auto">
         <Helmet>
           <title> inven || control </title>
         </Helmet>
 
-        <table className="table  ">
-          <thead className="bg-[#FAFBFE]">
+        <table className="table  my-4 ">
+          <thead className="bg-[#FAFBFE] ">
             <tr className="">
               <th>
                 <label>#</label>

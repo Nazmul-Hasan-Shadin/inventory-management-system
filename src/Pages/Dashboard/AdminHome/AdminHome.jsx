@@ -73,7 +73,7 @@ const getPath = (x, y, width, height) => {
   <div className='my-8 flex flex-col lg:flex-row items-center'>
 
     {/* ========================bar chart=========================== */}
- <div>
+ <div className=''>
  <BarChart width={430} height={250} data={data}>
 <CartesianGrid strokeDasharray="3 3" />
   <XAxis dataKey="name" />
