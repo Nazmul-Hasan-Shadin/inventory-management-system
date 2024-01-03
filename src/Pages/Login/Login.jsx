@@ -1,6 +1,7 @@
 import { FcGoogle } from "react-icons/fc";
+import { FaLock } from "react-icons/fa";
 import { AiOutlineGithub } from "react-icons/ai";
-
+import { IoMdMail } from "react-icons/io";
 import toast from "react-hot-toast";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
@@ -9,18 +10,15 @@ import useAuth from "../../hooks/useAuth";
 import useStore from "../../hooks/useStore";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
-
+import signInText from '../../assets/loginText.png'
 const Login = () => {
   
   const [store]=useStore()
   const axiosPublic = useAxiosPublic();
   const { googleSignIn, handleSignedIn, logOut, user,loading } = useAuth();
-  console.log(user,'iam user ho');
-  console.log(user);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
-  
+ 
 
 
 
@@ -42,17 +40,8 @@ const Login = () => {
        await result
       await new Promise(resolve => setTimeout(resolve, 0));
 
-      // if ( store?.manager) {
-      //   navigate('/dashboard')
-      // }
-      // else{
-      //   navigate('/create-store')
-      // }
 
-   
-       console.log(store?.manager,'manager');
-      console.log('iam result', result);
-      console.log(result);
+  
       toast.success('Login Successful');
     } 
     
@@ -69,14 +58,12 @@ const Login = () => {
   useEffect(() => {
     // Check if user is logged in and store manager is true, navigate to dashboard
     if (user && store.sysadmin) {
-      navigate('/mainDashboard/all-store');
+      navigate('/mainDashboard');
     } else if (user && store.manager) {
       // If user is logged in but store manager is still false, navigate to create-store
       navigate('/dashboard');
     }
-  // else if(user && !store.manager && !store.sysadmin){
-  //        navigate('/create-store')
-  // } 
+
   }, [user, store?.manager, navigate,store.sysadmin]);
 
 
@@ -119,60 +106,81 @@ const Login = () => {
             <Helmet>
         <title> inventory || Login</title>
        </Helmet>
-      <form onSubmit={handleLogin}>
-        <div className="flex flex-col space-y-4 h-[480] w-480 items-center justify-center p-10 ">
-          <h2 className="text-2xl font-bold text-center">
-            Sign In To Your Account
-          </h2>
-          <label className="space-y-4  " htmlFor="email">
-            {" "}
-            <span>Email Address</span>
-            <input
-              type="text"
-              name="email"
-              placeholder="Type here"
-              className="input input-bordered w-full "
-            />
-          </label>
 
-          <label className="space-y-4  " htmlFor="email">
-            {" "}
-            <span>Your Password</span>
-            <input
-              type="text"
-              name="password"
-              placeholder="Type here"
-              className="input input-bordered w-full "
-            />
-          </label>
-
-          <span className="">
-            <span className="">Forget Password ?</span>
-          </span>
-
-          <div className="w-4/12">
-            <button className="btn btn-primary w-full block ">Sign In</button>
-          </div>
-
-          <span>Or Continiou With</span>
-
-          <span className="flex gap-10">
-            <button onClick={() => googleHandler()} className="btn">
-              {" "}
-              <FcGoogle className="text-2xl"> </FcGoogle> Google
-            </button>
-            <button className="btn bg-black text-white">
-              {" "}
-              <AiOutlineGithub className="text-2xl"></AiOutlineGithub> Github
-            </button>
-          </span>
-
-          <Link className="text-blue-700" to={"/register"}>
-            {" "}
-            Register Now
-          </Link>
+       <div className="flex">
+        <div>
+        
         </div>
-      </form>
+       <form onSubmit={handleLogin}>
+ 
+ <div className="flex flex-col space-y-4 h-[480] w-480 items-center justify-center p-10 ">
+          <div>
+          <img src={signInText} alt="" />
+          <h2> Login To Your Account</h2>
+          </div>
+    
+
+         <div className="form-control relative">
+          <label className="label">
+            <span className="label-text">Email</span>
+          </label>
+          <input
+             type="text"
+             name="email"
+             placeholder="Type here"
+             className="input input-bordered bg-[#F1F3F6] w-[429px] h-11 "
+           />
+           <IoMdMail className="text-6xl absolute -right-1 text-[#FD7401]  top-[35%]  "></IoMdMail>
+        </div>
+
+       
+
+
+
+         <div className="form-control relative">
+          <label className="label">
+            <span className="label-text">Email</span>
+          </label>
+          <input
+             type="text"
+             name="password"
+             placeholder="Type here"
+             className="input input-bordered bg-[#F1F3F6] w-[429px]   "
+           />
+           <FaLock /> 
+        </div>
+
+         {/* <span className="">
+           <span className="">Forget Password ?</span>
+         </span> */}
+
+         <div className="w-full ">
+           <button  className="btn btn-primary w-full bg-orange-500 block ">Sign In</button>
+         </div>
+
+         <span>Or Continiou With</span>
+
+         <span className="flex gap-10">
+           <button onClick={() => googleHandler()} className="btn">
+             {" "}
+             <FcGoogle className="text-2xl"> </FcGoogle> Google
+           </button>
+           <button className="btn bg-black text-white">
+             {" "}
+             <AiOutlineGithub className="text-2xl"></AiOutlineGithub> Github
+           </button>
+         </span>
+
+         <Link className="text-blue-700" to={"/register"}>
+           {" "}
+           Register Now
+         </Link>
+       </div>
+
+     </form>
+
+       </div>
+
     </div>
   );
 };

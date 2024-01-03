@@ -20,22 +20,25 @@ const AdminNavbar = () => {
   <div className="flex-none gap-12">
  <div className="flex text-5xl gap-7"> 
  <GiEarthAfricaEurope className="bg-[#F6F7F8] rounded-xl p-2" />
- <SiGmail className="bg-[#F6F7F8] rounded-xl p-2" />
+ <span className="relative">
+ <SiGmail className="bg-[#F6F7F8]  rounded-xl p-2" />
+ <div className="badge badge-secondary -top-1 text-sm left-7 absolute">+0</div>
+ </span>
  <IoIosNotifications className="bg-[#F6F7F8] rounded-xl p-2" />
  </div>
     <div className="dropdown dropdown-end">
     <div className="flex items-center gap-3">
     <div tabIndex={0} role="button" className="btn flex btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img alt={user?.photoURL} />
+          <img className="" src={user?.photoURL} alt="image not found" />
          
         </div>
     
 
       </div>
-      <div >
-      <h2>{user?.displayName}</h2>
-      <span className="text-sm ">super admin</span>
+      <div className="" >
+      <h2 className="font-medium h-4">{user?.displayName}</h2>
+      <span className="text-[12px] ">super admin</span>
       </div>
     </div>
       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
