@@ -10,7 +10,25 @@
 }
 
 
+@keyframes vibrate-animation {
+    0%{
+   
+      top: 23%;
+
+    }
+    100%{
+
+    }
+
+
+    
+}
+
 .moving-animation{
     
     animation: moving-animation 3s ease-in-out 0s 1 alternate ;
+}
+
+.orange-vibrate{
+    animation: vibrate-animation 3s ease-in-out 0s infinite alternate ;
 }

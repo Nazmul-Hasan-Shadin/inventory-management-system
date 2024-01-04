@@ -2,6 +2,7 @@ import React from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
 import './banner.css'
+import orange from '../../../assets/orange.png'
 const Banner = () => {
 
   AOS.init();
@@ -18,6 +19,8 @@ const Banner = () => {
               className=" rounded-lg shadow-2xl"
             />
         <img className="absolute moving-animation top-7 lg:top-9 right-0  h-40 lg:h-full  " src="https://i.ibb.co/TtytPD0/girl.png" alt="" />
+
+        <img src={orange} className=" absolute top-16 lg:top-24   h- lg:h  left-6   h-24 lg:h-72 orange-vibrate" alt="" />
 
           </div>
           <div className="flex-1 text-center space-y-5 pb-8 lg:p"  >
