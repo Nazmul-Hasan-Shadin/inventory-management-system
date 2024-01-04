@@ -1,6 +1,8 @@
 import React from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
+import backgroundImg from '../../../assets/why-us-bg.png'
+import './whyChoiceUS.css'
 const WhyChoiceUs = () => {
 
   AOS.init();
@@ -9,11 +11,16 @@ const WhyChoiceUs = () => {
     data-aos-anchor-placement="top-bottom"    data-aos-duration="500">
       <div className="hero min-h-screen bg-[#FFFFFF]">
         <div className="hero-content flex-col lg:flex-row lg:px-36">
-          <div className="flex-1  hidden lg:block">
+          <div className="flex-1 relative  hidden lg:block">
             <img
               src="https://i.ibb.co/6vgTrX3/boy-img.png"
-              className="max-w-sm rounded-lg shadow-2xl"
+              className="max-w-sm  rounded-lg shadow-2xl"
             />
+           <img
+              src={backgroundImg}
+              className="max-w-sm rounded-lg shadow-2xl absolute top-10 -z-10 boys-behind "
+            />
+
           </div>
           <div className="flex-1 " >
             <h1 className=" text-2xl lg:text-5xl font-bold text-[#ff7b31]">Why Choose Us ?</h1>
@@ -28,7 +35,7 @@ const WhyChoiceUs = () => {
   <div className="collapse collapse-arrow join-item border border-base-300">
     <input className="w-full" type="radio" name="my-accordion-4" checked="checked" /> 
     <div className="collapse-title text-xl font-medium">
-    Efficient Tracking
+  <span className="text-orange-500">   Efficient Tracking</span>
     </div>
     <div className="collapse-content"> 
       <p>Keep a pulse on your inventory with our robust tracking system, ensuring accuracy and minimizing discrepancies.</p>
@@ -68,7 +75,7 @@ const WhyChoiceUs = () => {
   </div>
 
 
-</div>
+                </div>
 
 
           </div>
