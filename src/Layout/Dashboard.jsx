@@ -66,7 +66,7 @@ const Dashboard = () => {
                     {" "}
                     <Link to={"/"}>
                       <FaHome></FaHome>
-                      admin Home{" "}
+                      Go Home{" "}
                     </Link>{" "}
                   </li>
 
@@ -80,13 +80,7 @@ const Dashboard = () => {
                   </li>
 
 
-                  <li>
-                    {" "}
-                    <Link to={"/dashboard/payment"}>
-                      <FaHome></FaHome>
-                      Payment{" "}
-                    </Link>{" "}
-                  </li>
+         
              
 
                   <li>
@@ -115,12 +109,13 @@ const Dashboard = () => {
 
                   <li>
                     {" "}
-                    <Link onClick={() => handleLogOut()} to={"/"}>
+                    <Link to={"/dashboard/payment"}>
                       <FaHome></FaHome>
-                      Logout{" "}
+                      Payment{" "}
                     </Link>{" "}
                   </li>
 
+      
                   <li>
                     {" "}
                     <Link to={"/dashboard/subscription"}>
@@ -128,6 +123,15 @@ const Dashboard = () => {
                       subscription{" "}
                     </Link>{" "}
                   </li>
+
+                  <li>
+                    {" "}
+                    <Link onClick={() => handleLogOut()} to={"/"}>
+                      <FaHome></FaHome>
+                      Logout{" "}
+                    </Link>{" "}
+                  </li>
+
                 </>
               )}
               {/* =========================================System admin route============================================================ */}

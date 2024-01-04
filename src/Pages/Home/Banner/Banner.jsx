@@ -1,6 +1,7 @@
 import React from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
+import './banner.css'
 const Banner = () => {
 
   AOS.init();
@@ -9,14 +10,14 @@ const Banner = () => {
     data-aos-anchor-placement="center-bottom">
       <div className="hero h-[100vh] lg:h-[80vh]  bg-[#f0e9e8]">
         <div className="hero-content  flex-col lg:flex-row-reverse ">
-          <div  className="flex-1 relative   lg:block">
+          <div  className="flex-1 relative    lg:block  ">
 
     
             <img
               src="https://i.ibb.co/b14GZPJ/banner.png"
               className=" rounded-lg shadow-2xl"
             />
-        <img className="absolute top-7 lg:top-9 right-0  h-40 lg:h-full " src="https://i.ibb.co/TtytPD0/girl.png" alt="" />
+        <img className="absolute moving-animation top-7 lg:top-9 right-0  h-40 lg:h-full  " src="https://i.ibb.co/TtytPD0/girl.png" alt="" />
 
           </div>
           <div className="flex-1 text-center space-y-5 pb-8 lg:p"  >

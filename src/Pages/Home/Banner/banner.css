@@ -1,0 +1,16 @@
+@keyframes moving-animation {
+    0%{
+   
+     transform: translate(-200px);
+    }
+
+    100%{
+        transform: translate(0px);
+    }
+}
+
+
+.moving-animation{
+    
+    animation: moving-animation 3s ease-in-out 1s 1 alternate ;
+}
