@@ -2,6 +2,7 @@
 import { Helmet } from 'react-helmet-async';
 import useAllProducts from '../../../hooks/useAllProducts';
 import SalesProductInfo from './salesProductInfo';
+import AdminStat from '../../../Components/AdminStat/AdminStat';
 
 const SaleSummery = () => {
     const [products]=useAllProducts()
@@ -31,50 +32,31 @@ const SaleSummery = () => {
     
 
     return (
-  <div className='overflow-x-auto'>
+  <div className='overflow-x-auto mt-12'>
               <Helmet>
             <title> inven || sales </title>
           </Helmet>
-<div className="stats  shadow">
-  
- 
 
 
-<div className="stat">
-<div className="stat-figure text-secondary">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-</div>
-<div className="stat-title">Total Sale</div>
-<div className="stat-value">{totalSaleCount}</div>
-<div className="stat-desc">Jan 1st - Feb 1st</div>
-</div>
-
-<div className="stat">
-<div className="stat-figure text-secondary">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-</div>
-<div className="stat-title">Total Invest</div>
-<div className="stat-value"> $ {totalInvest}</div>
-<div className="stat-desc">Jan 1st - Feb 1st</div>
-</div>
+<div className=" grid grid-cols-1 px-7 md:grid-cols-2 lg:grid-cols-3 gap-8  lg:px-12">
 
 
-<div className="stat">
-<div className="stat-figure text-secondary">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-</div>
-<div className="stat-title">Total Profit</div>
-<div className="stat-value">{totalProfit.toFixed(2)}</div>
-<div className="stat-desc">Jan 1st - Feb 1st</div>
-</div>
+
+<AdminStat value={totalSaleCount} title={'Total Sale'} bg={'orange'} ></AdminStat>
 
 
+
+<AdminStat value={totalInvest} title={'Total Invest'} bg={'orange'} ></AdminStat>
+
+
+
+<AdminStat value={totalProfit.toFixed(2)} title={'Total Profit'} bg={'orange'} ></AdminStat>
   </div>
 
 
  {/*============================ sales product==================== */}
   
-<div>
+<div className='py-10'>
 <SalesProductInfo totalProfit={totalProfit}></SalesProductInfo>
 </div>
   </div>

@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import useAllProducts from "../../../hooks/useAllProducts";
-import { FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
 import useaxiosSecure from "../../../hooks/useaxiosSecure";
 import useAuth from "../../../hooks/useAuth";
-import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import SearchSection from "../../../Components/Product/SearchSection";

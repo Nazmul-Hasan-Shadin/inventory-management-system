@@ -1,5 +1,5 @@
 import CountUp from 'react-countup';
-import useAllProducts from '../../hooks/useAllProducts';
+
 const AdminStat = ({title,value,bg,shop}) => {
 
     return (

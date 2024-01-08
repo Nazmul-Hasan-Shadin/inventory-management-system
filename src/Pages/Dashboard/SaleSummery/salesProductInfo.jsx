@@ -41,16 +41,6 @@ const SalesProductInfo = ({}) => {
                   <label></label>
                 </th>
 
-{/* 
-           <td>
-           <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle  h-16">
-                <img src={product?.image} />
-              </div>
-            </div>
-          </div>
-           </td> */}
 
 
                 <td>
@@ -59,7 +49,7 @@ const SalesProductInfo = ({}) => {
                       <div className="mask mask-squircle  h-16"></div>
                     </div>
                     <div>
-                      <div className="text-sm opacity-50">
+                      <div className="text-sm opacity-50 text-black">
                         {" "}
                         {product?.cartId?.map((item) => item.name).join(", ")}
                       </div>
