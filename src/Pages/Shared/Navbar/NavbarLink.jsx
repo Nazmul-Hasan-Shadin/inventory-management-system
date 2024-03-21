@@ -7,7 +7,17 @@ import useAuth from '../../../hooks/useAuth';
 const NavbarLink = () => {
     const {user}=useContext(AuthContext)
     const [manager, isManagerLoading] = useStore();
-    const {handleLogout}=useAuth()
+    console.log(manager, "storesdjfkjdkf")
+    const { handleLogOut: handleSignOut, loading } = useAuth();
+    const handleLogout = () => {
+      handleSignOut()
+        .then((res) => {
+          console.log(res, "succes logout");
+        })
+        .catch((err) => {
+          console.log(err, "logout error");
+        });
+    };
     return  <>
           <li className="flex items-center gap-2">
             {" "}

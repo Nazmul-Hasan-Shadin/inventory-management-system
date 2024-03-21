@@ -26,21 +26,13 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     setIsDropDownOpen(false);
   };
-  const handleLogout = () => {
-    handleSignOut()
-      .then((res) => {
-        console.log(res, "succes logout");
-      })
-      .catch((err) => {
-        console.log(err, "logout error");
-      });
-  };
+
 
 
   return (
     <div className="bg-[#FFFFFF]">
       <Container>
-        <div className="flex justify-between items-center relative">
+        <div className="flex justify-between items-center relative p-3">
           <div>
             <img className=" h-6 sm:h-8 md:h-10 lg:h-12 " src={logo} alt="" />
           </div>
@@ -54,9 +46,7 @@ const Navbar = () => {
           <div className="flex mr-9 md:mr-0 gap-1 sm:gap-4 md:gap-5">
             <CiSearch className="text-2xl  " />
             <span className="border-r-2 "> <CiShoppingCart className="text-2xl mr-2" /> </span>
-            <div>
-              <img onMouseOver={() => setIsDropDownOpen(!isDropDownOpen)} src={avatar} className='w-6' alt="" />
-            </div>
+            <div> <img onMouseOver={() => setIsDropDownOpen(!isDropDownOpen)} src={avatar} className='w-6' alt="" /> </div>
 
 
             <div className={`${isDropDownOpen ? 'active animation' : ''} absolute z-10 -right-1 top-12  dropDownContainer `} >

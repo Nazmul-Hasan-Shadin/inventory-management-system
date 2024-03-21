@@ -1,10 +1,13 @@
+
 import React from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { TbWorldPlus } from 'react-icons/tb';
+import Container from '../../Shared/Container/Container';
 
 const SocialLink = () => {
     return (
- <div  data-aos="zoom-in">
+ <Container>
+   <div data-aos="zoom-in">
          <div className='grid w-full  grid-cols-1 md:grid-cols-3 my-6 px-5 lg-px'>
 
 <div>
@@ -118,6 +121,7 @@ const SocialLink = () => {
 
 </div>
  </div>
+ </Container>
     );
 };
 

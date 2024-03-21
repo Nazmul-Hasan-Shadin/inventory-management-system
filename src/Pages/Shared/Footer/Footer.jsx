@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/pos-logo.png'
 import { FaFacebook, FaLink, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import Container from '../Container/Container';
 
 const Footer = () => {
     return (
-        <div>
+    <Container>
+              <div>
             <footer className="footer p-10 bg-base-200 text-base-content">
   <aside>
     <img className='h-12' src={logo} alt="" />
@@ -49,6 +51,7 @@ const Footer = () => {
   </aside>
 </footer>
         </div>
+    </Container>
     );
 };
 

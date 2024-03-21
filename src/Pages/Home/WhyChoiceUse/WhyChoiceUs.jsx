@@ -3,23 +3,19 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'
 import backgroundImg from '../../../assets/why-us-bg.png'
 import './whyChoiceUS.css'
+import Container from "../../Shared/Container/Container";
 const WhyChoiceUs = () => {
 
   AOS.init();
   return (
-    <div data-aos="fade-up"
-    data-aos-anchor-placement="top-bottom"    data-aos-duration="500">
-      <div className="hero min-h-screen bg-[#FFFFFF]">
-        <div className="hero-content flex-col lg:flex-row lg:px-36">
+    <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="500">
+      <div className="hero min-h-screen bg-[#FFFBF6]">
+   <Container>
+   <div className="hero-content flex-col lg:flex-row lg:px-36">
           <div className="flex-1 relative  hidden lg:block">
-            <img
-              src="https://i.ibb.co/6vgTrX3/boy-img.png"
-              className="max-w-sm  rounded-lg shadow-2xl"
-            />
-           <img
-              src={backgroundImg}
-              className="max-w-sm rounded-lg shadow-2xl absolute top-10 -z-10 boys-behind "
-            />
+            <img src="https://i.ibb.co/6vgTrX3/boy-img.png" className="max-w-sm  rounded-lg shadow-2xl"/>
+         
+           <img src={backgroundImg} className="max-w-sm rounded-lg shadow-2xl absolute top-10 -z-10 boys-behind "/>
 
           </div>
           <div className="flex-1 " >
@@ -30,12 +26,12 @@ const WhyChoiceUs = () => {
 
             {/* ====================accordion======================  */}
 
-            <div className="join join-vertical w-full">
+      <div className="join join-vertical w-full">
 
-  <div className="collapse collapse-arrow join-item border border-base-300">
+    <div className="collapse collapse-arrow join-item border border-base-300">
     <input className="w-full" type="radio" name="my-accordion-4" checked="checked" /> 
     <div className="collapse-title text-xl font-medium">
-  <span className="text-orange-500">   Efficient Tracking</span>
+   <span className="text-orange-500">   Efficient Tracking</span>
     </div>
     <div className="collapse-content"> 
       <p>Keep a pulse on your inventory with our robust tracking system, ensuring accuracy and minimizing discrepancies.</p>
@@ -80,6 +76,7 @@ const WhyChoiceUs = () => {
 
           </div>
         </div>
+   </Container>
       </div>
       
     </div>
