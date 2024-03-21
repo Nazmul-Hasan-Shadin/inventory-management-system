@@ -15,7 +15,7 @@ import { useState } from "react";
 import './Navbar.css'
 
 const Navbar = () => {
-   const [isDropDownOpen,setIsDropDownOpen]=useState(false)
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false)
   const { user } = useContext(AuthContext);
   const { handleLogOut: handleSignOut, loading } = useAuth();
 
@@ -36,47 +36,45 @@ const Navbar = () => {
       });
   };
 
-  
+
   return (
-    <div className="bg-[#F0E9E8]">
-       <Container>
-       <div className="flex justify-between items-center relative">
-    <div>
-     <img className=" h-6 sm:h-8 md:h-10 lg:h-12 " src={logo} alt="" />
-    </div>
+    <div className="bg-[#FFFFFF]">
+      <Container>
+        <div className="flex justify-between items-center relative">
+          <div>
+            <img className=" h-6 sm:h-8 md:h-10 lg:h-12 " src={logo} alt="" />
+          </div>
 
-    <div className=' hidden md:block'>
-      <ul className="flex gap-5 text-[17px]  ">
-        <NavbarLink />
-      </ul>
-    </div>
+          <div className=' hidden md:block'>
+            <ul className="flex gap-5 text-[17px]  ">
+              <NavbarLink />
+            </ul>
+          </div>
 
-    <div className="flex mr-9 md:mr-0 gap-1 sm:gap-4 md:gap-5">
-      <CiSearch className="text-2xl  "/>
-     
-      <span className="border-r-2 ">
-      <CiShoppingCart className="text-2xl mr-2"/>
-      </span>
-        <div className="">
-          <img   onMouseOver={()=>setIsDropDownOpen(!isDropDownOpen)} src={avatar} className='w-6' alt="" /> 
-       </div> 
+          <div className="flex mr-9 md:mr-0 gap-1 sm:gap-4 md:gap-5">
+            <CiSearch className="text-2xl  " />
+            <span className="border-r-2 "> <CiShoppingCart className="text-2xl mr-2" /> </span>
+            <div>
+              <img onMouseOver={() => setIsDropDownOpen(!isDropDownOpen)} src={avatar} className='w-6' alt="" />
+            </div>
 
-        <div className={`${isDropDownOpen?'active animation':''} absolute z-10 -right-1 top-12  dropDownContainer `} >  
-        { isDropDownOpen ? <DropDownProfile isDropDownOpen={isDropDownOpen}/>:''}
+
+            <div className={`${isDropDownOpen ? 'active animation' : ''} absolute z-10 -right-1 top-12  dropDownContainer `} >
+              {isDropDownOpen ? <DropDownProfile isDropDownOpen={isDropDownOpen} /> : ''}
+            </div>
+
+
+
+
+
+          </div>
+
+          <div className=" block md:hidden absolute  right-1">
+            <CiMenuBurger />
+          </div>
         </div>
-      
-       
 
-
-      
-    </div>
-
-    <div className=" block md:hidden absolute  right-1">
-      <CiMenuBurger/>
-    </div>
-   </div>
-
-   </Container>
+      </Container>
     </div>
 
   );
