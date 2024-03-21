@@ -1,0 +1,23 @@
+.dropDown {
+    opacity: 0; /* Start with hidden opacity */
+    visibility: hidden;
+    transform: translateY(60px); /* Shifted down initially */
+    transition: opacity 3s ease, transform 3s ease; /* Animation for opening */
+}
+
+.dropDown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    
+}
+.dropDownContainer{
+    height:0px;
+    overflow: hidden;
+    transition: height .800s ease-in-out;
+
+}
+
+.dropDownContainer.active{
+    height: 290px;
+}

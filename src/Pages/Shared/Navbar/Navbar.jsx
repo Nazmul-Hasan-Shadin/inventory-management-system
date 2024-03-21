@@ -5,13 +5,27 @@ import logo from "../../../assets/pos-logo.png";
 import useStore from "../../../hooks/useStore";
 import { AuthContext } from "../../../AuthProvider/AutProvider";
 import avatar from '../../../assets/download.png'
+import { CiSearch } from "react-icons/ci";
+import { CiShoppingCart } from "react-icons/ci";
+import { CiMenuBurger } from "react-icons/ci";
+import NavbarLink from "./NavbarLink";
+import Container from "../Container/Container";
+import DropDownProfile from "./DropDownProfile";
+import { useState } from "react";
+import './Navbar.css'
+
 const Navbar = () => {
+   const [isDropDownOpen,setIsDropDownOpen]=useState(false)
   const { user } = useContext(AuthContext);
   const { handleLogOut: handleSignOut, loading } = useAuth();
 
   const [manager, isManagerLoading] = useStore();
   console.log(manager, "storesdjfkjdkf");
 
+
+  const handleMouseLeave = () => {
+    setIsDropDownOpen(false);
+  };
   const handleLogout = () => {
     handleSignOut()
       .then((res) => {
@@ -22,132 +36,49 @@ const Navbar = () => {
       });
   };
 
-  const links = (
-    <>
-      <li>
-        {" "}
-        <NavLink
-          to={"/"}
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
-          }
-        >
-          {" "}
-          Home
-        </NavLink>
-      </li>
-
-      {user ? (
-        <li>
-          {" "}
-          <Link>
-            <button onClick={handleLogout}> Log Out</button>
-          </Link>{" "}
-        </li>
-      ) : (
-        <li>
-          {" "}
-          <Link to={"/login"}> Login</Link>{" "}
-        </li>
-      )}
-      {!user?.email && (
-        <li>
-          {" "}
-          <Link to={"/register"}> Register</Link>
-        </li>
-      )}
-
-      {manager.manager || (manager.sysadmin && !isManagerLoading) ? (
-        <li>
-          {" "}
-          <Link to={"/dashboard"}> Dashboard</Link>
-        </li>
-      ) : (
-        <li>
-          {" "}
-          <Link to={"/create-store"}> Create-Shop</Link>
-        </li>
-      )}
-      <li>
-        {" "}
-        <Link to="/watch-demo" target="_blank"> Watch Overview</Link>
-      </li>
-    </>
-  );
-
+  
   return (
-    <div className="navbar bg-base-100  items-center">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            {links}
-          </ul>
-        </div>
-
-        <img className=" w-20  md:w-28 rounded-full" src={logo} alt="" />
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
-      </div>
-      <div>
-        <div className="nvbar-end   flex items-center gap-8  ">
-          <div>
-            <p> {user?.displayName} </p>
-          </div>
-          <div className="dropdown  left-8 dropdown-end ">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-
-             { user? <div className="w-10 rounded-full">
-                <img src={user?.photoURL} />
-              </div>:           <div className="w-10 rounded-full">
-              <img src={avatar} />
-            </div>
-              
-              }
-
-     
-
-            </label>
-            <ul
-              tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="justify-between">
-                {user?.displayName}
-                
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a onClick={handleLogout}>Logout</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div className="bg-[#F0E9E8]">
+       <Container>
+       <div className="flex justify-between items-center relative">
+    <div>
+     <img className=" h-6 sm:h-8 md:h-10 lg:h-12 " src={logo} alt="" />
     </div>
+
+    <div className=' hidden md:block'>
+      <ul className="flex gap-5 text-[17px]  ">
+        <NavbarLink />
+      </ul>
+    </div>
+
+    <div className="flex mr-9 md:mr-0 gap-1 sm:gap-4 md:gap-5">
+      <CiSearch className="text-2xl  "/>
+     
+      <span className="border-r-2 ">
+      <CiShoppingCart className="text-2xl mr-2"/>
+      </span>
+        <div className="">
+          <img   onMouseOver={()=>setIsDropDownOpen(!isDropDownOpen)} src={avatar} className='w-6' alt="" /> 
+       </div> 
+
+        <div className={`${isDropDownOpen?'active animation':''} absolute z-10 -right-1 top-12  dropDownContainer `} >  
+        { isDropDownOpen ? <DropDownProfile isDropDownOpen={isDropDownOpen}/>:''}
+        </div>
+      
+       
+
+
+      
+    </div>
+
+    <div className=" block md:hidden absolute  right-1">
+      <CiMenuBurger/>
+    </div>
+   </div>
+
+   </Container>
+    </div>
+
   );
 };
 
